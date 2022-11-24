@@ -1,7 +1,8 @@
 <?php
   
 namespace App\Http\Controllers;
-   
+
+use Hash;   
 use App\Models\User;
 use App\Models\MLMMembers;
 use Illuminate\Http\Request;
@@ -24,23 +25,22 @@ class FrontController extends Controller
 
     public function customLogin(Request $request)
     {
-        Log::info('0000000000000000000000000000000000000000!');
-        Log::info($request);
 
             $request->validate([
-                'username' => 'required',
+                'email' => 'required',
                 'password' => 'required',
             ]);
        
-            $credentials = $request->only('username', 'password');
-Log::info($credentials);
-
-            // print_r("sssssss");
-            // exit();
+            $credentials = $request->only('email', 'password');
+           
 
             if (Auth::attempt($credentials)) {
-                return redirect()->intended('inde')
+                Log::info('pass');
+                return redirect()->intended('index')
                             ->withSuccess('Signed in');
+            }
+            else {
+                Log::info('Faild');
             }
       
             return redirect("index")->withSuccess('Login details are not valid');
@@ -69,15 +69,9 @@ Log::info($credentials);
      */
     public function create()
     {
-        $res = User::create([
-            'name' => 'aaaaa',
-            'email' => 'aaaaa@sdsd.com',
-            //'password' => 'aaaaaadasasasasa'
-          ]);
 
-        Log::info($res);
-        print_r("asssss");
-        exit();
+        // print_r("asssss");
+        // exit();
 
         return view('front.register');
     }
@@ -86,13 +80,22 @@ Log::info($credentials);
     public function save(Request $request)
     {
 
-exit();
+
         $request->validate([
             'name' => 'required',
             'email' => 'required',
         ]);
     
         MLMMembers::create($request->all());
+
+        $res = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+          ]);
+
+        Log::info($res);
+
         return view('front.index');
      
         // return redirect()->route('index')

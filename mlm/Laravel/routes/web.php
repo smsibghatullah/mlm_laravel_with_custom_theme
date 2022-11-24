@@ -23,6 +23,7 @@ Route::get('/', [FrontController::class, 'index']);
 Route::get('/register', [FrontController::class, 'create']);
 Route::get('/profile/{id}', [FrontController::class, 'show']);
 Route::get('login', [FrontController::class, 'login'])->name('login');
+Route::get('deposit', [FrontController::class, 'deposit'])->name('deposit');
 // Route::get('/profiles/{id}', 'FrontController@show')->name('profiles.show');
 Route::post('/store', [FrontController::class, 'save']);
 Route::post('/custom-login', [FrontController::class, 'customLogin'])->name('login.custom'); 
