@@ -58,20 +58,20 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">                                                                                          
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="packages.html">Packages</a></li>
-                                                <li><a href="help.html">Help</a></li>
-                                                <li><a href="#">Blog</a>
-                                                    <ul class="submenu">
+                                                <li><a href="/">Home</a></li>
+                                                <li><a href="/transaction">Transaction</a></li>
+                                                <li><a href="/activity">Activity</a></li>
+                                                <li><a href="/blog">Blog</a>
+                                                    <!-- <ul class="submenu">
                                                         <li><a href="blog.html">Blog</a></li>
                                                         <li><a href="blog_details.html">Blog Details</a></li>
                                                         <li><a href="elements.html">Element</a></li>
-                                                    </ul>
+                                                    </ul> -->
                                                 </li>
-                                                <li><a href="contact.html">Contact</a></li>
+                                                <!-- <li><a href="contact.html">Contact</a></li> -->
                                                 <!-- Button -->
-                                                <li class="button-header margin-left "><a href="register.html" class="btn">Sign Up</a></li>
-                                                <li class="button-header"><a href="login.html" class="btn3">Sign In</a></li>
+                                                <li class="button-header margin-left "><a href="/register" class="btn">Sign Up</a></li>
+                                                <li class="button-header"><a href="/login" class="btn3">Sign In</a></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -183,7 +183,7 @@
                         <div class="col-xl-12">
                             <div class="footer-copy-right text-center">
                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by  DSM
                                   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 
                               </div>

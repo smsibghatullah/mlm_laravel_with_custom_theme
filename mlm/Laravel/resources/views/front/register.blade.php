@@ -9,7 +9,7 @@
          <div class="row align-items-center justify-content-center">
            <div class="col-xl-8 col-lg-9 col-md-12 ">
              <div class="hero__caption hero__caption3 text-center">
-               <h1 data-animation="fadeInLeft" data-delay=".6s "></h1>
+               <h1 data-animation="fadeInLeft" data-delay=".6s ">Registration Form</h1>
              </div>
            </div>
          </div>
@@ -19,112 +19,123 @@
   
    <section class="blog_area single-post-area section-padding">
      <div class="container">
-      <div class="row">
+      <div class="">
 
-
+<center>
       <form class="well form-horizontal" action="/store" method="post"  id="contact_form">
         <fieldset>
           {{ csrf_field() }}
 
-        <!-- Form Name -->
-        <legend><center><h2><b>Registration Form</b></h2></center></legend><br>
-
-        <!-- Text input-->
 
         <div class="form-group">
-          <label class="col-md-4 control-label">Full Name</label>  
+            
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                
+              </div>
+
+                <div class="col-md-6">
+                
+              </div>
+              
+            </div>
+          </div>
+
+
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input  name="name" placeholder="Full Name" class="form-control"  type="text">
+          <input  style= "font-size: 17px;font-family:unset; display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="name" placeholder="Full Name" class="form-control"  type="text">
             </div>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-md-4 control-label">User Name</label>  
+           
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input  name="user_name" placeholder="User Name" class="form-control"  type="text">
+          <input  style= "font-size: 17px;font-family:unset; display:flex;margin-bottom: 20px; padding: 0.5rem 0.5rem; height: 50px !important ; border: 2px solid #ced4da; justify-content-center"; name="user_name" placeholder="User Name" class="form-control"  type="text">
             </div>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-md-4 control-label">Email</label>  
+            
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input  name="email" placeholder="Email" class="form-control"  type="text">
+          <input  style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="email" placeholder="Email" class="form-control"  type="text">
             </div>
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-4 control-label">Fund Password</label>  
+           
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input  name="fund_password" placeholder="Password" class="form-control"  type="text">
+          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="fund_password" placeholder="Fund Password" class="form-control"  type="Password">
             </div>
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-4 control-label">Fund Password (Retype)</label>  
+           
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input  placeholder="Password" class="form-control"  type="text">
-            </div>
-          </div>
-        </div>
-
-
-        <div class="form-group">
-          <label class="col-md-4 control-label">Phone</label>  
-          <div class="col-md-4 inputGroupContainer">
-          <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input  name="phone" placeholder="Phone" class="form-control"  type="text">
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-4 control-label">Refereance Link</label>  
-          <div class="col-md-4 inputGroupContainer">
-          <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input  name="code" placeholder="Code" class="form-control"  type="text">
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-4 control-label">Refereance Link</label>  
-          <div class="col-md-4 inputGroupContainer">
-          <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input  name="parent_code" placeholder="Code" class="form-control"  type="text">
+          <input style= "font-size: 17px;font-family:unset; display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; placeholder="Fund Password (Retype)" class="form-control"  type="Password">
             </div>
           </div>
         </div>
 
 
-
         <div class="form-group">
-          <label class="col-md-4 control-label">Password</label>  
+            
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input  name="password" placeholder="Password" class="form-control"  type="text">
+          <input  style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="Phone" placeholder="Phone" class="form-control"  type="text">
             </div>
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-4 control-label">Password (Retype)</label>  
+          
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input placeholder="Password" class="form-control"  type="text">
+          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="code" placeholder="Refereance Code" class="form-control"  type="text">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+           
+          <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="parent_code" placeholder="Refereance Link" class="form-control"  type="text">
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+            
+          <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="password" placeholder="Password" class="form-control"  type="Password">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+           
+          <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; placeholder="Re-Password" class="form-control"  type="Password">
             </div>
           </div>
         </div>
@@ -146,6 +157,7 @@
 
         </fieldset>
     </form>
+    </center>
 
   </div>
 </div>

@@ -83,7 +83,7 @@ class FrontController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:mlm_members',
         ]);
     
         MLMMembers::create($request->all());
@@ -135,9 +135,8 @@ class FrontController extends Controller
      */
     public function show(int $id)
     {
-        print_r("--------------");
+
         $profile = MLMMembers::find($id);
-        print_r($profile);
         return view('front.profile',compact('profile'));
     } 
      
