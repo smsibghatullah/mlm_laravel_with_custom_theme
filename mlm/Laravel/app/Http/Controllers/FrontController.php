@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Hash;   
 use App\Models\User;
-use App\Models\MLMMembers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
@@ -54,14 +53,7 @@ class FrontController extends Controller
         return view('front.index');
     }
      
-    //  public function show()
-    // {
-    //     // $users = User::latest()->paginate(5);
-    
-    //     return view('front.index');
-    // }
-     
-
+   
     /**
      * Show the form for creating a new resource.
      *
@@ -80,52 +72,34 @@ class FrontController extends Controller
     public function save(Request $request)
     {
 
-
+        // dd(uniqid());
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|unique:mlm_members',
+            'full_name' => 'required',
+            'email' => 'required|unique:users',
+            'user_name' => 'required|unique:users',
+            'password' => 'required',
+            'fund_password' => 'required',
+            'phone' => 'required|unique:users',
+            'parent_code' => 'unique:users',
         ]);
     
-        MLMMembers::create($request->all());
 
         $res = User::create([
-            'name' => $request->name,
+            'full_name' => $request->full_name,
+            'user_name' => $request->user_name,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'fund_password' => Hash::make($request->fund_password),
+            'phone' => $request->phone,
+            'parent_code' => $request->parent_code,
+            'code' => uniqid()
           ]);
 
         Log::info($res);
-
-        return view('front.index');
-     
-        // return redirect()->route('index')
-        //                 ->with('success','User created successfully.');
+        // return view('front.index');     
+        return redirect()->route('front.index')->with('success','Registration Completed successfully.');
     }
 
-
-    /**
-    
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-        ]);
-    
-        
-        //
-        exit();
-        MLMMembers::create($request->all());
-
-     
-        return redirect()->route('/')
-                        ->with('success','User created successfully.');
-    }
      
     /**
      * Display the specified resource.
@@ -136,7 +110,7 @@ class FrontController extends Controller
     public function show(int $id)
     {
 
-        $profile = MLMMembers::find($id);
+        $profile = User::find($id);
         return view('front.profile',compact('profile'));
     } 
      

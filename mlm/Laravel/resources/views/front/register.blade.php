@@ -47,8 +47,12 @@
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input  style= "font-size: 17px;font-family:unset; display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="name" placeholder="Full Name" class="form-control"  type="text">
-            </div>
+          <input  style= "font-size: 17px;font-family:unset; display:flex; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="full_name" placeholder="Full Name" class="form-control"  type="text">
+          </div>
+          @if($errors->has('full_name'))
+            <small class="text-danger">{{ $errors->first('full_name') }}</small>
+        @endif   
+        
           </div>
         </div>
 
@@ -57,8 +61,12 @@
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input  style= "font-size: 17px;font-family:unset; display:flex;margin-bottom: 20px; padding: 0.5rem 0.5rem; height: 50px !important ; border: 2px solid #ced4da; justify-content-center"; name="user_name" placeholder="User Name" class="form-control"  type="text">
-            </div>
+          <input  style= "font-size: 17px;font-family:unset; display:flex; padding: 0.5rem 0.5rem; height: 50px !important ; border: 2px solid #ced4da; justify-content-center"; name="user_name" placeholder="User Name" class="form-control"  type="text">
+          </div>
+          @if($errors->has('user_name'))
+            <small class="text-danger">{{ $errors->first('user_name') }}</small>
+          @endif       
+        
           </div>
         </div>
 
@@ -67,8 +75,12 @@
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input  style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="email" placeholder="Email" class="form-control"  type="text">
-            </div>
+          <input  style= "font-size: 17px;font-family:unset;display:flex; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="email" placeholder="Email" class="form-control"  type="text">
+          </div>
+          @if($errors->has('email'))
+            <small class="text-danger">{{ $errors->first('email') }}</small>
+        @endif        
+       
           </div>
         </div>
         <div class="form-group">
@@ -76,8 +88,12 @@
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="fund_password" placeholder="Fund Password" class="form-control"  type="Password">
-            </div>
+          <input style= "font-size: 17px;font-family:unset;display:flex; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="fund_password" placeholder="Fund Password" class="form-control"  type="Password">
+          </div>
+          @if($errors->has('fund_password'))
+            <small class="text-danger">{{ $errors->first('fund_password') }}</small>
+          @endif        
+       
           </div>
         </div>
         <div class="form-group">
@@ -85,40 +101,14 @@
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input style= "font-size: 17px;font-family:unset; display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; placeholder="Fund Password (Retype)" class="form-control"  type="Password">
-            </div>
+          <input style= "font-size: 17px;font-family:unset; display:flex; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="confirm_fund_password" placeholder="Fund Password (Retype)" class="form-control"  type="Password">
           </div>
-        </div>
-
-
-        <div class="form-group">
-            
-          <div class="col-md-4 inputGroupContainer">
-          <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input  style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="Phone" placeholder="Phone" class="form-control"  type="text">
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
+          @if($errors->has('confirm_fund_password'))
+            <small class="text-danger">{{ $errors->first('confirm_fund_password') }}</small>
+          @endif       
           
-          <div class="col-md-4 inputGroupContainer">
-          <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="code" placeholder="Refereance Code" class="form-control"  type="text">
-            </div>
           </div>
         </div>
-        <div class="form-group">
-           
-          <div class="col-md-4 inputGroupContainer">
-          <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="parent_code" placeholder="Refereance Link" class="form-control"  type="text">
-            </div>
-          </div>
-        </div>
-
 
 
         <div class="form-group">
@@ -126,8 +116,36 @@
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="password" placeholder="Password" class="form-control"  type="Password">
-            </div>
+          <input  style= "font-size: 17px;font-family:unset;display:flex; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="phone" placeholder="Phone" class="form-control"  type="text">
+             
+        </div>
+          </div>
+        </div>
+        
+        <div class="form-group">           
+          <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input style= "font-size: 17px;font-family:unset;display:flex; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="parent_code" placeholder="Refereance Code" class="form-control"  type="text">
+          @if($errors->has('parent_code'))
+            <small class="text-danger">{{ $errors->first('parent_code') }}</small>
+          @endif       
+        </div>
+          </div>
+        </div>
+
+
+
+        <div class="form-group">            
+          <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input style= "font-size: 17px;font-family:unset;display:flex; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="password" placeholder="Password" class="form-control"  type="Password">
+          </div>
+          @if($errors->has('password'))
+            <small class="text-danger">{{ $errors->first('password') }}</small>
+          @endif        
+       
           </div>
         </div>
         <div class="form-group">
@@ -135,8 +153,12 @@
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; placeholder="Re-Password" class="form-control"  type="Password">
-            </div>
+          <input style= "font-size: 17px;font-family:unset;display:flex; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="confirm_password" placeholder="Re-Password" class="form-control"  type="Password">
+          </div>
+          @if($errors->has('confirm_password'))
+            <small class="text-danger">{{ $errors->first('confirm_password') }}</small>
+          @endif       
+        
           </div>
         </div>
 
