@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,13 @@ Route::get('login', [FrontController::class, 'login'])->name('login');
 Route::get('deposit', [FrontController::class, 'deposit'])->name('deposit');
 // Route::get('/profiles/{id}', 'FrontController@show')->name('profiles.show');
 Route::post('/store', [FrontController::class, 'save']);
-Route::post('/custom-login', [FrontController::class, 'customLogin'])->name('login.custom'); 
+Route::post('/loginpost', [FrontController::class, 'customLogin']); 
+Route::get('logout', [FrontController::class, 'logout']);
+
+Route::get('/administrator', [AdminController::class, 'index']);
+Route::get('/administrator/users', [AdminController::class, 'users']);
+Route::get('/administrator/userdetails/{id}', [AdminController::class, 'user']);
+Route::get('/administrator/mark_approved/{id}', [AdminController::class, 'mark_approve_user']);
 
 // Route::resource('/', 'App\Http\Controllers\FrontController@index');
 // Route::resource('front', FrontController::class);

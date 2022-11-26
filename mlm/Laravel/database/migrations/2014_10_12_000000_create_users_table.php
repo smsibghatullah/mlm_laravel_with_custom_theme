@@ -23,9 +23,11 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('code');
             $table->string('parent_code');
+            $table->string('level')->default('1');
+            $table->string('status')->default('UnPaid');
             $table->timestamps();
-        });
-    }
+    });
+}
 
     /**
      * Reverse the migrations.

@@ -59,19 +59,19 @@
                                         <nav>
                                             <ul id="navigation">                                                                                          
                                                 <li><a href="/">Home</a></li>
+                                                @if(Auth::check())
                                                 <li><a href="/transaction">Transaction</a></li>
                                                 <li><a href="/activity">Activity</a></li>
+                                                <li class="button-header margin-left "><a href="/logout" class="btn">Sign Out</a></li>
+                                                @else 
+                                                <li class="button-header margin-left "><a href="/register" class="btn">Sign Up</a></li>
+                                                <li class="button-header"><a href="/login" class="btn3">Sign In</a></li>
+                                                  @endif
                                                 <li><a href="/blog">Blog</a>
-                                                    <!-- <ul class="submenu">
-                                                        <li><a href="blog.html">Blog</a></li>
-                                                        <li><a href="blog_details.html">Blog Details</a></li>
-                                                        <li><a href="elements.html">Element</a></li>
-                                                    </ul> -->
                                                 </li>
                                                 <!-- <li><a href="contact.html">Contact</a></li> -->
                                                 <!-- Button -->
-                                                <li class="button-header margin-left "><a href="/register" class="btn">Sign Up</a></li>
-                                                <li class="button-header"><a href="/login" class="btn3">Sign In</a></li>
+
                                             </ul>
                                         </nav>
                                     </div>

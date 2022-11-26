@@ -20,29 +20,37 @@ class FrontController extends Controller
     {
 
         return view('front.login');
-    } 
+    }    
+
+    public function logout(Request $request) {
+      Auth::logout();
+      return redirect('/login');
+    }
+
 
     public function customLogin(Request $request)
     {
+
+
 
             $request->validate([
                 'email' => 'required',
                 'password' => 'required',
             ]);
-       
-            $credentials = $request->only('email', 'password');
-           
+            
 
+            $credentials = $request->only('email', 'password');
+       
             if (Auth::attempt($credentials)) {
-                Log::info('pass');
-                return redirect()->intended('index')
+                Log::info('pass 1111111111111111111111111111111111111111111111111');
+                return redirect()->intended('/')
                             ->withSuccess('Signed in');
             }
             else {
-                Log::info('Faild');
+                Log::info('Faild000000000000000000000000000000000000000000000');
             }
       
-            return redirect("index")->withSuccess('Login details are not valid');
+            return redirect("login")->withSuccess('Login details are not valid');
     }
 
 
@@ -77,8 +85,8 @@ class FrontController extends Controller
             'full_name' => 'required',
             'email' => 'required|unique:users',
             'user_name' => 'required|unique:users',
-            'password' => 'required',
-            'fund_password' => 'required',
+            'password' => 'min:6|required_with:confirm_password|same:confirm_password',
+            'fund_password' => 'min:6|required_with:confirm_fund_password|same:confirm_fund_password',
             'phone' => 'required|unique:users',
             'parent_code' => 'unique:users',
         ]);
@@ -97,7 +105,7 @@ class FrontController extends Controller
 
         Log::info($res);
         // return view('front.index');     
-        return redirect()->route('front.index')->with('success','Registration Completed successfully.');
+        return redirect()->route('login')->with('success','Registration Completed successfully.');
     }
 
      

@@ -22,21 +22,17 @@
       <div class="">
 
 <center>
-      <form action="/custom-login" method="post" >
+      <form action="/loginpost" method="POST" >
         <fieldset>
           {{ csrf_field() }}
 
-        <!-- Form Name -->
-        <legend><center><h2><b></b></h2></center></legend><br>
-
-        <!-- Text input-->
 
         <div class="form-group">
             
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; placeholder="User Name" class="form-control"  type="text">
+          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; placeholder="User Name" class="form-control"  type="text" name="email" />
             </div>
           </div>
         </div>
@@ -46,7 +42,7 @@
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; placeholder="Password" class="form-control"  type="Password">
+          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; placeholder="Password" class="form-control" name="password"  type="Password" />
             </div>
           </div>
         </div>
@@ -57,7 +53,7 @@
           <div class="col-md-4"><br>
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <!-- <input type="submit" name="Submit"/> -->
-            <button type="submit" class="btn btn-warning" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+            <input type="submit"  value="submit" ></input>
           </div>
         </div>
 
