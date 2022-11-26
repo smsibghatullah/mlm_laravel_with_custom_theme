@@ -42,12 +42,10 @@ class FrontController extends Controller
             $credentials = $request->only('email', 'password');
        
             if (Auth::attempt($credentials)) {
-                Log::info('pass 1111111111111111111111111111111111111111111111111');
                 return redirect()->intended('/')
                             ->withSuccess('Signed in');
             }
             else {
-                Log::info('Faild000000000000000000000000000000000000000000000');
             }
       
             return redirect("login")->withSuccess('Login details are not valid');
@@ -88,9 +86,9 @@ class FrontController extends Controller
             'password' => 'min:6|required_with:confirm_password|same:confirm_password',
             'fund_password' => 'min:6|required_with:confirm_fund_password|same:confirm_fund_password',
             'phone' => 'required|unique:users',
-            'parent_code' => 'unique:users',
+            'parent_code' => 'exists:users,code',
         ]);
-    
+
 
         $res = User::create([
             'full_name' => $request->full_name,
