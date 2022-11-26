@@ -21,6 +21,10 @@ class FrontController extends Controller
 
         return view('front.login');
     }    
+    public function depositeform()
+    {
+        return view('front.depositeform');
+    }
 
     public function logout(Request $request) {
       Auth::logout();

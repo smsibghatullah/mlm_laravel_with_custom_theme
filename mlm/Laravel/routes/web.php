@@ -34,6 +34,7 @@ Route::get('/administrator', [AdminController::class, 'index']);
 Route::get('/administrator/users', [AdminController::class, 'users']);
 Route::get('/administrator/userdetails/{id}', [AdminController::class, 'user']);
 Route::get('/administrator/mark_approved/{id}', [AdminController::class, 'mark_approve_user']);
+Route::get('/depositeform',[FrontController::class, 'depositeform']);
 
 // Route::resource('/', 'App\Http\Controllers\FrontController@index');
 // Route::resource('front', FrontController::class);
