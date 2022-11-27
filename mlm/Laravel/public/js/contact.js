@@ -10,6 +10,21 @@ $(document).ready(function(){
 
     // validate contactForm form
     $(function() {
+
+
+        $(".activity_popup").click(function() {
+   //         waitingDialog.show('Activity is going on please wait...');
+            waitingDialog.show('I\'m waiting', {
+  dialogSize: 'lg',
+  progressType: 'success'
+});
+            setTimeout(function () {
+              waitingDialog.hide();
+            }, 10000);
+
+          });
+
+
         $('#contactForm').validate({
             rules: {
                 name: {

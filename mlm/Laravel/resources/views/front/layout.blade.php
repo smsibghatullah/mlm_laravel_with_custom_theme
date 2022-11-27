@@ -236,7 +236,7 @@
 <script src="{{ asset('js/hover-direction-snake.min.js')}}"></script>
 
 <!-- contact js -->
-<script src="{{ asset('js/contact.js')}}"></script>
+
 <script src="{{ asset('js/jquery.form.js')}}"></script>
 <script src="{{ asset('js/jquery.validate.min.js')}}"></script>
 <script src="{{ asset('js/mail-script.js')}}"></script>
@@ -245,6 +245,10 @@
 <!-- Jquery Plugins, main Jquery -->    
 <script src="{{ asset('js/plugins.js')}}"></script>
 <script src="{{ asset('js/main.js')}}"></script>
+
+<script src="{{ asset('js/waypoints.min.js')}}"></script>
+<script src="{{ asset('js/bootstrap-waitingfor.js')}}"></script>
+<script src="{{ asset('js/contact.js')}}"></script>
 
 </body>
 </html>

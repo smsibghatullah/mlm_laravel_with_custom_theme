@@ -24,7 +24,11 @@ Route::get('/', [FrontController::class, 'index']);
 Route::get('/register', [FrontController::class, 'create']);
 Route::get('/profile/{id}', [FrontController::class, 'show']);
 Route::get('login', [FrontController::class, 'login'])->name('login');
-Route::get('deposit', [FrontController::class, 'deposit'])->name('deposit');
+Route::get('/deposit', [FrontController::class, 'depositform']);
+Route::get('/activity', [FrontController::class, 'activity']);
+Route::get('/tree', [FrontController::class, 'tree']);
+Route::post('/savedeposit', [FrontController::class, 'savedeposit']);
+
 // Route::get('/profiles/{id}', 'FrontController@show')->name('profiles.show');
 Route::post('/store', [FrontController::class, 'save']);
 Route::post('/loginpost', [FrontController::class, 'customLogin']); 
@@ -34,7 +38,7 @@ Route::get('/administrator', [AdminController::class, 'index']);
 Route::get('/administrator/users', [AdminController::class, 'users']);
 Route::get('/administrator/userdetails/{id}', [AdminController::class, 'user']);
 Route::get('/administrator/mark_approved/{id}', [AdminController::class, 'mark_approve_user']);
-Route::get('/depositeform',[FrontController::class, 'depositeform']);
+// Route::get('/depositform',[FrontController::class, 'depositeform']);
 
 // Route::resource('/', 'App\Http\Controllers\FrontController@index');
 // Route::resource('front', FrontController::class);

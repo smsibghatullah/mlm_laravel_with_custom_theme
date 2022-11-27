@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Hash;   
 use App\Models\User;
+use App\Models\deposit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
@@ -21,9 +22,16 @@ class FrontController extends Controller
 
         return view('front.login');
     }    
-    public function depositeform()
+    public function depositform()
     {
-        return view('front.depositeform');
+        $user_detail = Auth::user();
+        return view('front.depositform',compact('user_detail'));
+    }
+
+    public function activity()
+    {
+        return view('front.activity');
+
     }
 
     public function logout(Request $request) {
@@ -31,18 +39,13 @@ class FrontController extends Controller
       return redirect('/login');
     }
 
-
     public function customLogin(Request $request)
     {
-
-
-
             $request->validate([
                 'email' => 'required',
                 'password' => 'required',
             ]);
             
-
             $credentials = $request->only('email', 'password');
        
             if (Auth::attempt($credentials)) {
@@ -63,6 +66,102 @@ class FrontController extends Controller
         return view('front.index');
     }
      
+
+
+    public function tree()
+    {
+        // $users = User::latest()->paginate(5);
+        $tree_html = '<ul><li>';
+        $plucked = User::all()->pluck(
+          'full_name', 
+          'code'
+        );
+        $user_name_data = $plucked->all();
+
+        Log::info(print_r($user_name_data['63832848403fa'], true));
+
+
+        $code = Auth::user()->code;
+
+                        Log::info(print_r(Auth::user()->code, true));
+
+        $tree_html .='<a>'.$user_name_data[$code].'</a>';
+        $tree = [];
+
+        $child = $this->get_child($code);
+        
+        if(count($child)>0)
+            { 
+                $tree[$code] = $child;
+                $tree_html .= '<ul>';
+                foreach ($child as $code1) 
+                {
+                    $tree_html .='<li>';
+                    $child1 = $this->get_child($code1);
+                    $tree_html .='<a>'.$user_name_data[$code1].'</a>';
+
+                    if(count($child1)>0)
+                        { 
+                    
+                        $tree_html .= '<ul>';
+                        $tree[$code][$code1] = $child1;
+                        foreach ($child1 as $code2) 
+                            {
+                            $tree_html .='<li>';
+                            $child2 = $this->get_child($code2);
+                            $tree_html .='<a>'.$user_name_data[$code2].'</a>';
+
+                            if(count($child2)>0)
+                                {
+                                    $tree_html .= '<ul>';
+                                foreach ($child2 as $code3) 
+                                    { 
+                                            $tree_html .='<li>';
+                                            // $child2 = $this->get_child($code2);
+                                            $tree_html .='<a>'.$user_name_data[$code3].'</a>';                                            
+                                            $tree_html .='</li>';
+
+                                    }
+                                    $tree_html .='</ul>';
+                                }
+                            $tree_html .='</li>';
+                            }
+                        $tree_html .='</ul>';
+                        }
+                    $tree_html .='</li>';
+                }
+                $tree_html .='</ul>';
+
+            }
+            
+$tree_html .='</li></ui>';
+
+
+
+
+                Log::info(print_r($tree_html, true));    
+        return view('front.tree',compact('tree_html'));
+    }
+     
+
+
+    public function get_child($code)
+    {
+            $sub_tree = [];
+            $level1_user = User::where('parent_code',$code)->get();
+            
+            if($level1_user)
+            {
+
+            foreach ($level1_user as $user)    
+            {
+                array_push($sub_tree,$user['code']);
+            }
+            }
+            return $sub_tree;
+
+
+    }     
    
     /**
      * Show the form for creating a new resource.
@@ -78,6 +177,32 @@ class FrontController extends Controller
         return view('front.register');
     }
     
+
+    public function savedeposit(Request $request)
+    {
+        Log::info(" savedeposit 00000000");
+
+        // dd(uniqid());
+        $request->validate([
+            'amount' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);    
+
+        $imageName = time().'.'.$request->image->extension();  
+        $request->image->move(public_path('images/deposit'), $imageName);
+        $res = Deposit::create([
+            'amount' => $request->amount,
+            'image' => $imageName,
+            // 'email' => $request->email,
+            'user_id' => Auth::user()->id,
+          ]);
+
+        Log::info($res);
+        // return view('front.index');     
+        return redirect()->route('/transaction')->with('success','Registration Completed successfully.');
+    }
+
+
     
     public function save(Request $request)
     {
@@ -89,8 +214,8 @@ class FrontController extends Controller
             'user_name' => 'required|unique:users',
             'password' => 'min:6|required_with:confirm_password|same:confirm_password',
             'fund_password' => 'min:6|required_with:confirm_fund_password|same:confirm_fund_password',
-            'phone' => 'required|unique:users',
-            'parent_code' => 'exists:users,code',
+            // 'phone' => 'required|unique:users',
+            // 'parent_code' => 'exists:users,code',
         ]);
 
 

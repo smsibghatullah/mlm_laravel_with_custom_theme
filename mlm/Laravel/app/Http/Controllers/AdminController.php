@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\deposit;
 use Illuminate\Support\Facades\Log;
+
 
 use Illuminate\Http\Request;
 
@@ -33,7 +35,10 @@ class AdminController extends Controller
     public function user(int $id)
     {
         $profile = User::find($id);
-        return view('admin.profile',compact('profile'));
+        $deposits = Deposit::where('user_id', $id)->firstOrFail();
+        // Log::info($deposits->user_id);
+        Log::info(print_r($deposits->user_id, true));
+        return view('admin.profile',compact('profile','deposits'));
 
 
         
