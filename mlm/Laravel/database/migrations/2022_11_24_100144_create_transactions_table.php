@@ -20,9 +20,9 @@ class CreateTransactionsTable extends Migration
             $table->string('status');
             $table->string('description');
             $table->string('title');
-            $table->boolean('depsit');
+            $table->boolean('deposit');
             $table->boolean('withdraw');
-            $table->date('date');
+            // $table->date('date');
             $table->bigInteger('user_id')->unsigned()->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

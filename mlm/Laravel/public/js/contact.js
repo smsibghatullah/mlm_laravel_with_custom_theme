@@ -11,16 +11,34 @@ $(document).ready(function(){
     // validate contactForm form
     $(function() {
 
-
+        var conter =0;
         $(".activity_popup").click(function() {
-   //         waitingDialog.show('Activity is going on please wait...');
-            waitingDialog.show('I\'m waiting', {
-  dialogSize: 'lg',
-  progressType: 'success'
-});
+            $(this).prop('disabled', true);
+            conter +=1;
+
+            console.log(conter);
+            if(conter==3)
+            {
+                
+                $.ajax({
+                   type:'POST',
+                   url:'/dailytaskcomplate',
+                   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                   data : {
+                        "_token": $('#token').val()
+                      },
+                    success:function(data) {
+                    console.log(data.msg)
+                       }
+                    });
+             } 
+             waitingDialog.show('Activity number '+conter.toString()+' in progress', {
+                  dialogSize: 'lg',
+                  progressType: 'success'
+                });
             setTimeout(function () {
               waitingDialog.hide();
-            }, 10000);
+            }, 1000);
 
           });
 

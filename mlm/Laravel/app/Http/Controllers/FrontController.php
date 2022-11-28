@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Hash;   
 use App\Models\User;
 use App\Models\deposit;
+use App\Models\dailytask;
 use Illuminate\Http\Request;
+use App\Models\transaction;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
   
@@ -33,6 +35,45 @@ class FrontController extends Controller
         return view('front.activity');
 
     }
+
+    public function dailytaskcomplate()
+    {
+        
+        $level1_user_amount = Deposit::where('user_id',Auth::user()->id)->firstOrFail();
+
+        if($level1_user_amount['level']==1)
+        {
+            $amount = ($level1_user_amount['amount']/100)*0.5;
+        }
+        elseif($level1_user_amount['level']==2)
+        {
+            $amount = ($level1_user_amount['amount']/100)*0.6;
+        }
+        elseif($level1_user_amount['level']==3)
+        {
+            $amount = ($level1_user_amount['amount']/100)*0.73;
+        } 
+        elseif($level1_user_amount['level']==4)
+        {
+            $amount = ($level1_user_amount['amount']/100)*0.83;
+        } 
+
+        $res = Dailytask::create([
+            'amount' => $amount,
+            'user_id' => Auth::user()->id,
+          ]);
+
+        $response = array(
+          'status' => 'success',
+          'msg' => 'Done',
+      );
+
+        // Log::info($res);
+
+        response()->json($response); 
+
+    }
+
 
     public function logout(Request $request) {
       Auth::logout();
@@ -194,6 +235,7 @@ $tree_html .='</li></ui>';
             'amount' => $request->amount,
             'image' => $imageName,
             // 'email' => $request->email,
+            'status'=>'pending',
             'user_id' => Auth::user()->id,
           ]);
 
@@ -202,6 +244,11 @@ $tree_html .='</li></ui>';
         return redirect()->route('/transaction')->with('success','Registration Completed successfully.');
     }
 
+    public function transactions()
+    {
+        $transactions = Transaction::where('user_id', Auth::user()->id)->get();
+        return view('front.transactions',compact('transactions'));
+    }
 
     
     public function save(Request $request)

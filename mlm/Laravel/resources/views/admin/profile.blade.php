@@ -8,8 +8,11 @@
 			    
 			    <h1 class="app-page-title">User Detail</h1>
 			    @if($profile['status']!='Approved')
+			    <div class="row">
+			    	<div>
 			   	<a href="/administrator/mark_approved/{{ $profile['id']}}"><button class="btn app-btn-primary" name="Approved">Approve</button></a>
-			   	<br/>
+			   </div>
+			   </div>
 			   	@endif
                 <div class="row gy-4">
 	                <div class="col-12 col-lg-6">
@@ -87,8 +90,10 @@
 						</div><!--//app-card-->
 	                </div><!--//col-->
 
-
-
+					@php
+	                if(count($deposits)>0)
+	                {
+	                @endphp
 	                <div class="col-12 col-lg-6">
 		                <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
 						    <div class="app-card-header p-3 border-bottom-0">
@@ -107,7 +112,7 @@
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label"><strong>Amount</strong></div>
-									        <div class="item-data">{{ $deposits['amount']}}</div>
+									        <div class="item-data">{{ $deposits[0]['amount']}}</div>
 									    </div><!--//col-->
 
 								    </div><!--//row-->
@@ -115,8 +120,18 @@
 							    <div class="item border-bottom py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
+										    <div class="item-label"><strong>Status</strong></div>
+									        <div class="item-data">{{ $deposits[0]['status']}}</div>
+									    </div><!--//col-->
+
+								    </div><!--//row-->
+							    </div><!--//item-->
+
+							    <div class="item border-bottom py-3">
+								    <div class="row justify-content-between align-items-center">
+									    <div class="col-auto">
 										    <div class="item-label"><strong>Date </strong></div>
-									        <div class="item-data">{{ date_format($deposits['created_at'],"Y/m/d");}}</div>
+									        <div class="item-data">{{ date_format($deposits[0]['created_at'],"Y/m/d");}}</div>
 									    </div><!--//col-->
 
 								    </div><!--//row-->
@@ -127,7 +142,7 @@
 									    <div class="col-auto">
 										    <div class="item-label"><strong>Image</strong></div>
 									        <div class="item-data">
-										       <a target="new" href="/images/deposit/{{ $deposits['image'] }}"> <img src="/images/deposit/{{ $deposits['image'] }}" width="200px"/></a>
+										       <a target="new" href="/images/deposit/{{ $deposits[0]['image'] }}"> <img src="/images/deposit/{{ $deposits[0]['image'] }}" width="200px"/></a>
 									        </div>
 									    </div><!--//col-->
 
@@ -140,7 +155,9 @@
 	                </div><!--//col-->
 
 
-
+					@php
+	                }
+	                @endphp
 
 
 

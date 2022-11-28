@@ -26,7 +26,10 @@ Route::get('/profile/{id}', [FrontController::class, 'show']);
 Route::get('login', [FrontController::class, 'login'])->name('login');
 Route::get('/deposit', [FrontController::class, 'depositform']);
 Route::get('/activity', [FrontController::class, 'activity']);
+Route::post('/dailytaskcomplate', [FrontController::class, 'dailytaskcomplate']);
+
 Route::get('/tree', [FrontController::class, 'tree']);
+Route::get('/transactions', [FrontController::class, 'transactions']);
 Route::post('/savedeposit', [FrontController::class, 'savedeposit']);
 
 // Route::get('/profiles/{id}', 'FrontController@show')->name('profiles.show');

@@ -9,7 +9,7 @@
          <div class="row align-items-center justify-content-center">
            <div class="col-xl-8 col-lg-9 col-md-12 ">
              <div class="hero__caption hero__caption3 text-center">
-               <h1 data-animation="fadeInLeft" data-delay=".6s ">Deposite Form</h1>
+               <h1 data-animation="fadeInLeft" data-delay=".6s ">Activity</h1>
              </div>
            </div>
          </div>
@@ -23,9 +23,9 @@
 
 <center style="border: 1px solid #ced4da!important;border-radius: 10px;padding: 2px;margin: 0px;a">
 
-
-  <div class= "activity_popup">
-    <button class="btn"> Activity 1 </button>
+<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+  <div class= "">
+    <button class="btn activity_popup"> Activity 1 </button>
   </div>
   <br/>
     <div class= "activity_popup">
