@@ -32,6 +32,8 @@ Route::get('/tree', [FrontController::class, 'tree']);
 Route::get('/transactions', [FrontController::class, 'transactions']);
 Route::post('/savedeposit', [FrontController::class, 'savedeposit']);
 
+Route::get('/blog', [FrontController::class, 'blog']);
+
 // Route::get('/profiles/{id}', 'FrontController@show')->name('profiles.show');
 Route::post('/store', [FrontController::class, 'save']);
 Route::post('/loginpost', [FrontController::class, 'customLogin']); 

@@ -250,6 +250,12 @@ $tree_html .='</li></ui>';
         return view('front.transactions',compact('transactions'));
     }
 
+    public function blog()
+    {
+        // $transactions = Transaction::where('user_id', Auth::user()->id)->get();
+        return view('front.blog');
+    }
+
     
     public function save(Request $request)
     {

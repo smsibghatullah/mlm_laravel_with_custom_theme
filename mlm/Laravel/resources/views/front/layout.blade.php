@@ -60,8 +60,10 @@
                                             <ul id="navigation">                                                                                          
                                                 <li><a href="/">Home</a></li>
                                                 @if(Auth::check())
-                                                <li><a href="/transaction">Transaction</a></li>
+                                                <li><a href="/transactions">Transaction</a></li>
+                                                <li><a href="/tree">Tree</a></li>
                                                 <li><a href="/activity">Activity</a></li>
+                                                <li><a href="/deposit">Deposit</a></li>
                                                 <li class="button-header margin-left "><a href="/logout" class="btn">Sign Out</a></li>
                                                 @else 
                                                 <li class="button-header margin-left "><a href="/register" class="btn">Sign Up</a></li>

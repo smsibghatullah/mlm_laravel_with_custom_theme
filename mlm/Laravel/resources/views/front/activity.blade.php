@@ -25,6 +25,8 @@
 
 <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
   <div class= "">
+    Mubeeen 
+
     <button class="btn activity_popup"> Activity 1 </button>
   </div>
   <br/>
