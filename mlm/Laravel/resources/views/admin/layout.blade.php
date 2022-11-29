@@ -18,6 +18,7 @@
     <!-- App CSS -->  
     <link id="theme-style" rel="stylesheet" href="{{asset('/admin/css/portal.css')}}">
 
+
 </head> 
 
 <body class="app">   	

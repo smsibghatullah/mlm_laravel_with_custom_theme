@@ -22,6 +22,36 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
+    public function transaction(int $id)
+    {
+        $profile = User::find($id);
+        // dd($profile);
+        return view('admin.transaction',compact('profile'));          
+        
+    }
+
+    public function savetransaction(Request $data){
+        $create = [
+            'amount' => $data->amount,
+            'deposit'=> $data->deposit_withdraw == 'deposit' ?? true,
+            'withdraw'=>$data->deposit_withdraw == 'withdraw' ?? false,
+            'status'=>'Approved',
+            'description'=> $data->description,
+            'title'=> $data->title,
+            'transaction_id'=>uniqid(),
+            'user_id' => $data->user_id,
+        ];
+        // dd($create);
+        // First Line bouns 
+        $res = Transaction::create($create);
+        if($res){
+            $users = User::latest()->paginate(1000);
+    
+            return view('admin.users',compact('users'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+        }
+    }
+
 
 
     public function users()
@@ -117,7 +147,7 @@ class AdminController extends Controller
 
     public function referal_bouns(float $amount, int $user_id)
     {
-                /// First Line bouns 
+        // First Line bouns 
         $res = Transaction::create([
             'amount' => $amount/100*5,
             'deposit'=>true,

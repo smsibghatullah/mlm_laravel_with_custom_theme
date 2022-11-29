@@ -25,8 +25,6 @@ class CreateUsersTable extends Migration
             $table->string('parent_code');
             $table->string('level')->default('1');
             $table->string('status')->default('UnPaid');
-            $table->boolean('is_admin')->default(0);
-            $table->boolean('is_online')->default(0);
             $table->timestamps();
     });
 }
