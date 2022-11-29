@@ -42,6 +42,7 @@
 												<td class="cell">{{$user['code']}}</td>
 												<td>{{$user['status']}}</td>
 												<td class="cell"><a class="btn-sm app-btn-secondary" href="/administrator/userdetails/{{$user['id']}}">View</a></td>
+												<td class="cell"><a class="btn-sm app-btn-secondary" href="/administrator/transaction/{{$user['id']}}">Transaction</a></td>
 												
 											</tr>
 											 @endforeach
@@ -62,5 +63,4 @@
 			    
 		    </div><!--//container-fluid-->
 	    </div><!--//app-content-->
-	    
-	   @endsection
+ @endsection
