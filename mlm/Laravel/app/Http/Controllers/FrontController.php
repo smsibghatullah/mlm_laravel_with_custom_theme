@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Hash;   
 use App\Models\User;
+use App\Models\news;
 use App\Models\deposit;
 use App\Models\dailytask;
 use Illuminate\Http\Request;
@@ -253,7 +254,13 @@ $tree_html .='</li></ui>';
     public function blog()
     {
         // $transactions = Transaction::where('user_id', Auth::user()->id)->get();
-        return view('front.blog');
+
+        $blogs = News::latest()->paginate(1000);
+    
+        return view('front.blog',compact('blogs'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+
+        // return view('front.blog');
     }
 
     

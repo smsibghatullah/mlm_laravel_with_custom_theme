@@ -40,7 +40,13 @@ Route::get('/tree', [FrontController::class, 'tree']);
 Route::get('/transactions', [FrontController::class, 'transactions']);
 Route::post('/savedeposit', [FrontController::class, 'savedeposit']);
 Route::get('/administrator', [AdminController::class, 'index']);
+
 Route::get('/administrator/users', [AdminController::class, 'users']);
+Route::get('/administrator/news', [AdminController::class, 'news'])->name('/administrator/news');;
+Route::get('/administrator/news/create', [AdminController::class, 'newscreate']);
+Route::post('/administrator/news/create', [AdminController::class, 'savenews']);
+
+
 Route::get('/administrator/userdetails/{id}', [AdminController::class, 'user']);
 Route::get('/administrator/mark_approved/{id}', [AdminController::class, 'mark_approve_user']);
 Route::get('logout', [FrontController::class, 'logout']);
@@ -62,7 +68,7 @@ Route::post('/loginpost', [FrontController::class, 'customLogin']);
 // Route::resource('/', 'App\Http\Controllers\FrontController@index');
 // Route::resource('front', FrontController::class);
 // Route::resource('front', FrontController::class);
-
+// Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/inbox', [InboxController::class, 'index'])->name('inbox.index');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\deposit;
+use App\Models\news;
 use App\Models\transaction;
 use Illuminate\Support\Facades\Log;
 
@@ -32,6 +33,48 @@ class AdminController extends Controller
 
         
     }
+
+    public function news()
+    {
+        $blogs = News::latest()->paginate(1000);
+    
+        return view('admin.bloglist',compact('blogs'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+        
+    }
+
+    
+
+
+    public function savenews(Request $request)
+    {
+        Log::info(" savenews 00000000");
+
+        // dd(uniqid());
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);    
+
+
+        $res = News::create([
+            'title' => $request->title,
+            'description' => $request->description
+          ]);
+
+        Log::info($res);
+        // return view('front.index');     
+        return redirect()->route('/administrator/news')->with('success','Registration Completed successfully.');
+    }
+
+    public function newscreate()
+    {
+    
+        return view('admin.blog');
+        
+    }
+
+
 
     public function user(int $id)
     {
@@ -69,13 +112,7 @@ class AdminController extends Controller
             $code_array = $user->parent_code;
         }
         // in progress
-        
-
-        
         return view('admin.profile',compact('profile','deposits'));
-        
-
-        
     }
 
     public function referal_bouns(float $amount, int $user_id)
