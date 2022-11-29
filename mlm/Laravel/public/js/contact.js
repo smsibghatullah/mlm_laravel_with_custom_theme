@@ -14,7 +14,11 @@ $(document).ready(function(){
         var conter =0;
         $(".activity_popup").click(function() {
             $(this).prop('disabled', true);
+            
             conter +=1;
+            var butnid= this.id;
+
+
 
             console.log(conter);
             if(conter==3)
@@ -38,7 +42,9 @@ $(document).ready(function(){
                 });
             setTimeout(function () {
               waitingDialog.hide();
-            }, 1000);
+                          console.log($('#text_'+butnid));
+              $('#text_'+butnid).html("Activity has been completed successfully");
+            }, 10000);
 
           });
 

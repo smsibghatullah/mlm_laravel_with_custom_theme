@@ -9,7 +9,7 @@
          <div class="row align-items-center justify-content-center">
            <div class="col-xl-8 col-lg-9 col-md-12 ">
              <div class="hero__caption hero__caption3 text-center">
-               <h1 data-animation="fadeInLeft" data-delay=".6s ">Deposite Form</h1>
+               <h1 data-animation="fadeInLeft" data-delay=".6s ">Deposit</h1>
              </div>
            </div>
          </div>
