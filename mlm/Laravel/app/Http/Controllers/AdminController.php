@@ -8,6 +8,7 @@ use App\Models\settings;
 use App\Models\transaction;
 
 use Illuminate\Support\Facades\Log;
+use App\Enums\UserStatus;
 
 
 use Illuminate\Http\Request;
@@ -193,26 +194,12 @@ class AdminController extends Controller
     {
         $profile = User::find($id);
         $data = User::where('id', $id)->update([
-           'status' => 'Approved'
+           'status' => ProductStatusEnum::Approved
         ]);
         $deposits = Deposit::where('user_id', $id)->firstOrFail();
 
-        Deposit::where('user_id', $id)->update([
-           'status' => 'Approved'
-        ]);
+        Deposit::where('user_id', $id)->where('user_id', $id)->update(['status' => 'Approved']);
 
-        $code_array = $profile->parent_code;
-        // $code_array = [];
-        while ($code_array) {
-            $code = $code_array;
-            Log::info(print_r($code, true));
-            Log::info("asaaaaaaaaaasssssssssssssssssssss");
-            $user = User::where('code', $code)->firstOrFail();
-
-            $this->referal_bouns($deposits['amount'], $user->id);
-            
-            $code_array = $user->parent_code;
-        }
         // in progress
         return view('admin.profile',compact('profile','deposits'));
     }
