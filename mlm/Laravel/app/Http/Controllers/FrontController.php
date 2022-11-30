@@ -22,7 +22,6 @@ class FrontController extends Controller
 
     public function login()
     {
-
         return view('front.login');
     }    
     public function depositform()
@@ -34,7 +33,6 @@ class FrontController extends Controller
     public function activity()
     {
         return view('front.activity');
-
     }
 
     public function dailytaskcomplate()
@@ -67,9 +65,7 @@ class FrontController extends Controller
         $response = array(
           'status' => 'success',
           'msg' => 'Done',
-      );
-
-        // Log::info($res);
+        );
 
         response()->json($response); 
 
@@ -304,7 +300,6 @@ $tree_html .='</li></ui>';
      */
     public function show(int $id)
     {
-
         $profile = User::find($id);
         return view('front.profile',compact('profile'));
     } 
@@ -334,8 +329,7 @@ $tree_html .='</li></ui>';
             'email' => 'required',
         ]);
     
-        $user->update($request->all());
-    
+        $user->update($request->all());    
         return redirect()->route('users.index')
                         ->with('success','User updated successfully');
     }
@@ -348,8 +342,7 @@ $tree_html .='</li></ui>';
      */
     public function destroy(User $user)
     {
-        $user->delete();
-    
+        $user->delete();    
         return redirect()->route('users.index')
                         ->with('success','User deleted successfully');
     }
