@@ -49,6 +49,12 @@
 					        <a class="nav-link" href="/administrator/news">
 		                         <span class="nav-link-text">News</span>
 					        </a><!--//nav-link-->
+					    </li><!--//nav-item-->	
+					    <li class="nav-item">
+					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+					        <a class="nav-link" href="/administrator/settings">
+		                         <span class="nav-link-text">Settings</span>
+					        </a><!--//nav-link-->
 					    </li><!--//nav-item-->					   
 					  
 					   			    
