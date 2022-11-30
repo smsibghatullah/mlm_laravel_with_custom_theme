@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\deposit;
 use App\Models\news;
+use App\Models\settings;
 use App\Models\transaction;
+
 use Illuminate\Support\Facades\Log;
 
 
@@ -102,6 +104,76 @@ class AdminController extends Controller
     
         return view('admin.blog');
         
+    }
+
+    public function settings()
+    {
+
+        $settings = Settings::latest()->paginate(1000);
+        return view('admin.settings',compact('settings'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+        
+    }
+    public function settingcreate(Request $request)
+    {
+        
+
+        if ($request->isMethod('GET')) {
+            return view('admin.settingform');
+        }
+
+        if ($request->isMethod('POST')) {
+            // $this->validator($request->all())->validate();
+            $request->validate([
+            'key' => 'required',
+            'value' => 'required',
+        ]);  
+            // event(new Registered($user = $this->create($request->all())));
+            $res = Settings::create([
+            'key' => $request->key,
+            'value' => $request->value
+          ]);
+            return redirect()->route('/administrator/settings')->with('success','Registration Completed successfully.');
+
+            // return $this->registered($request, $user)
+                            // ?: redirect($this->redirectPath());
+        }
+
+        
+    }    
+
+
+    public function settingdelete(Request $request, int $id)
+    {
+
+            Settings::where('id', $id)->delete();
+
+            return redirect()->route('/administrator/settings')->with('success','Registration Completed successfully.');
+        
+    }
+
+    public function settingedit(Request $request, int $id)
+    {
+        Log::info($id);
+
+        if ($request->isMethod('GET')) {
+            $setting = Settings::where('id', $id)->firstOrFail();
+            return view('admin.settingedit',compact('setting'));
+        }
+
+        if ($request->isMethod('POST')) {
+            // $this->validator($request->all())->validate();
+            $request->validate([
+            // 'key' => 'required',
+            'value' => 'required',
+        ]);  
+            // event(new Registered($user = $this->create($request->all())));
+            
+            $data = Settings::where('id', $request->id)->update([
+           'value' => $request->value
+        ]);
+            return redirect()->route('/administrator/settings')->with('success','Registration Completed successfully.');
+        }
     }
 
 

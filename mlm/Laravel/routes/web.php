@@ -38,13 +38,25 @@ Route::post('/savedeposit', [FrontController::class, 'savedeposit']);
 Route::get('/administrator', [AdminController::class, 'index']);
 
 Route::get('/administrator/users', [AdminController::class, 'users']);
-Route::get('/administrator/news', [AdminController::class, 'news'])->name('/administrator/news');;
+Route::get('/administrator/news', [AdminController::class, 'news'])->name('/administrator/news');
 Route::get('/administrator/news/create', [AdminController::class, 'newscreate']);
 Route::post('/administrator/news/create', [AdminController::class, 'savenews']);
 Route::get('/administrator/transaction/{id}', [AdminController::class, 'transaction']);
-Route::post('/administrator/transaction', [AdminController::class, 'savetransaction']);
+Route::post('/administrator/transaction', [AdminController::class, 'savetransaction'])->name('/administrator/transaction');
 
 Route::get('/administrator/userdetails/{id}', [AdminController::class, 'user']);
+Route::get('/administrator/settings', [AdminController::class, 'settings'])->name('/administrator/settings');;
+
+
+
+Route::get('/administrator/settingedit/{id}', [AdminController::class, 'settingedit']);
+Route::get('/administrator/settingdelete/{id}', [AdminController::class, 'settingdelete']);
+Route::post('/administrator/settingedit/{id}', [AdminController::class, 'settingedit']);
+
+
+Route::get('/administrator/setting/create', [AdminController::class, 'settingcreate']);
+Route::post('/administrator/setting/create', [AdminController::class, 'settingcreate']);
+
 Route::get('/administrator/mark_approved/{id}', [AdminController::class, 'mark_approve_user']);
 Route::get('logout', [FrontController::class, 'logout']);
 
