@@ -20,6 +20,9 @@ use App\Listeners\DistributeMonthlyCommission;
 use App\Models\transaction;
 use App\Observers\TransactionObserver;
 
+use App\Models\Tasks;
+use App\Observers\TaskObserver;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -51,5 +54,6 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         transaction::observe(TransactionObserver::class);
+        Tasks::observe(TaskObserver::class);
     }
 }
