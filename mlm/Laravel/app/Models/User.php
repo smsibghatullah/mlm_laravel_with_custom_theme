@@ -46,7 +46,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'status' => UserStatus::class
+        // 'status' => UserStatus::class
     ];
 
      public function message() {
