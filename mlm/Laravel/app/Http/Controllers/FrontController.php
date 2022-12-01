@@ -27,6 +27,18 @@ class FrontController extends Controller
     public function depositform()
     {
         $user_detail = Auth::user();
+        $is_deposit = Deposit::where('user_id',Auth::user()->id)->firstOrFail();
+        if($is_deposit)
+        {
+        Log::info(print_r($is_deposit, true)); 
+        
+        }
+        else
+        {
+         Log::info("new");   
+        }
+
+
         return view('front.depositform',compact('user_detail'));
     }
 
