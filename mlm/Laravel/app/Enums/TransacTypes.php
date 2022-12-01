@@ -7,5 +7,6 @@ enum TransacTypes:string {
     case DailyEarning = 'dailyearning';
     case ReferalBouns = 'referal_bonus';
     case MatchindBonus = 'matchin_bouns';
+    case TeamCommission = 'team_commission';
 }
 

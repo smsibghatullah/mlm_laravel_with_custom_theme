@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('fund_password');
             $table->string('phone');
             $table->string('code');
-            $table->string('parent_code');
+            $table->string('parent_code')->nullable();
             $table->string('level')->default('1');
             $table->string('status')->default('UnPaid');
             $table->timestamps();

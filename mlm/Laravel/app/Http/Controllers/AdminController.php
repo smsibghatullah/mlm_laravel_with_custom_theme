@@ -21,7 +21,7 @@ class AdminController extends Controller
     public function index()
     {
         // $users = User::latest()->paginate(5);
-    
+
         return view('admin.index');
     }
 
@@ -29,15 +29,15 @@ class AdminController extends Controller
     {
         $profile = User::find($id);
         // dd($profile);
-        return view('admin.transaction',compact('profile'));          
-        
+        return view('admin.transaction',compact('profile'));
+
     }
 
     public function savetransaction(Request $data){
         $create = [
             'amount' => $data->amount,
             'deposit'=> $data->deposit_withdraw == 'deposit' ?? true,
-            'withdraw'=>$data->deposit_withdraw == 'withdraw' ?? false,
+            'withdraw'=>$data->deposit_withdraw == 'withdraw' ?? true,
             'status'=>'Approved',
             'description'=> $data->description,
             'title'=> $data->title,
@@ -45,11 +45,11 @@ class AdminController extends Controller
             'user_id' => $data->user_id,
         ];
         // dd($create);
-        // First Line bouns 
+        // First Line bouns
         $res = Transaction::create($create);
         if($res){
             $users = User::latest()->paginate(1000);
-    
+
             return view('admin.users',compact('users'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
         }
@@ -60,23 +60,23 @@ class AdminController extends Controller
     public function users()
     {
         $users = User::latest()->paginate(1000);
-    
+
         return view('admin.users',compact('users'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
 
-        
+
     }
 
     public function news()
     {
         $blogs = News::latest()->paginate(1000);
-    
+
         return view('admin.bloglist',compact('blogs'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
-        
+
     }
 
-    
+
 
 
     public function savenews(Request $request)
@@ -87,7 +87,7 @@ class AdminController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-        ]);    
+        ]);
 
 
         $res = News::create([
@@ -96,15 +96,15 @@ class AdminController extends Controller
           ]);
 
         Log::info($res);
-        // return view('front.index');     
+        // return view('front.index');
         return redirect()->route('/administrator/news')->with('success','Registration Completed successfully.');
     }
 
     public function newscreate()
     {
-    
+
         return view('admin.blog');
-        
+
     }
 
     public function settings()
@@ -113,11 +113,11 @@ class AdminController extends Controller
         $settings = Settings::latest()->paginate(1000);
         return view('admin.settings',compact('settings'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
-        
+
     }
     public function settingcreate(Request $request)
     {
-        
+
 
         if ($request->isMethod('GET')) {
             return view('admin.settingform');
@@ -128,7 +128,7 @@ class AdminController extends Controller
             $request->validate([
             'key' => 'required',
             'value' => 'required',
-        ]);  
+        ]);
             // event(new Registered($user = $this->create($request->all())));
             $res = Settings::create([
             'key' => $request->key,
@@ -140,8 +140,8 @@ class AdminController extends Controller
                             // ?: redirect($this->redirectPath());
         }
 
-        
-    }    
+
+    }
 
 
     public function settingdelete(Request $request, int $id)
@@ -150,7 +150,7 @@ class AdminController extends Controller
             Settings::where('id', $id)->delete();
 
             return redirect()->route('/administrator/settings')->with('success','Registration Completed successfully.');
-        
+
     }
 
     public function settingedit(Request $request, int $id)
@@ -167,9 +167,9 @@ class AdminController extends Controller
             $request->validate([
             // 'key' => 'required',
             'value' => 'required',
-        ]);  
+        ]);
             // event(new Registered($user = $this->create($request->all())));
-            
+
             $data = Settings::where('id', $request->id)->update([
            'value' => $request->value
         ]);
@@ -187,7 +187,7 @@ class AdminController extends Controller
         Log::info($deposits);
         // Log::info(print_r($deposits->user_id, true));
         return view('admin.profile',compact('profile','deposits'));
-        
+
     }
 
     public function mark_approve_user(int $id)
@@ -206,7 +206,7 @@ class AdminController extends Controller
 
     public function referal_bouns(float $amount, int $user_id)
     {
-        // First Line bouns 
+        // First Line bouns
         $res = Transaction::create([
             'amount' => $amount/100*5,
             'deposit'=>true,

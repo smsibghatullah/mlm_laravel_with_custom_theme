@@ -117,9 +117,13 @@ class FrontController extends Controller
 
     public function index()
     {
-        // $users = User::latest()->paginate(5);
-
         return view('front.index');
+    }
+
+    public function dashboard()
+    {
+        $user = User::where('id', Auth::user()->id)->get();
+        return view('front.dashboard', compact('user'));
     }
 
 
@@ -289,7 +293,8 @@ $tree_html .='</li></ui>';
             // 'parent_code' => 'exists:users,code',
         ]);
 
-
+        $admin = User::where('is_admin', true)->first();
+        dd($admin);
         $res = User::create([
             'full_name' => $request->full_name,
             'user_name' => $request->user_name,
@@ -297,7 +302,7 @@ $tree_html .='</li></ui>';
             'password' => Hash::make($request->password),
             'fund_password' => Hash::make($request->fund_password),
             'phone' => $request->phone,
-            'parent_code' => $request->parent_code,
+            'parent_code' => $request->parent_code ?? $admin->code,
             'code' => uniqid()
           ]);
 

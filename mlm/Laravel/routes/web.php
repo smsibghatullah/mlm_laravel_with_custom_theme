@@ -20,13 +20,14 @@ use App\Http\Controllers\InboxController;
 
 // Route::resource('users', UserController::class);
 Route::get('/', [FrontController::class, 'index']);
+
 Route::get('/register/{refcode?}', [FrontController::class, 'create']);
 
 Route::get('login', [FrontController::class, 'login'])->name('login');
 
 ///    ------- after login ---------
 Route::group(['middleware' => ['auth']], function() {
-
+    Route::get('/dashboard', [FrontController::class, 'dashboard']);
 
 Route::get('/activity', [FrontController::class, 'activity']);
 Route::get('/deposit', [FrontController::class, 'depositform']);

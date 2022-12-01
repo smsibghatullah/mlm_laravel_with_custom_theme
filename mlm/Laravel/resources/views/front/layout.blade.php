@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('css/slick.css')}}">
     <link rel="stylesheet" href="{{ asset('css/nice-select.css')}}">
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
-    
+
 </head>
 <body>
     <!-- ? Preloader Start -->
@@ -52,7 +52,7 @@
                                     <a href="/" style="  font-size: 40px !important;font-style: italic;font-family: a;">
                                         <!-- <img src="{{ asset('images1/logo/logo.png')}}" alt="YTMCash">-->
                                         YTMCash
-                                        </a> 
+                                        </a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10">
@@ -60,15 +60,17 @@
                                     <!-- Main-menu -->
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
-                                            <ul id="navigation">                                                                                          
-                                                <li><a href="/">Home</a></li>
+                                            <ul id="navigation">
+
                                                 @if(Auth::check())
+                                                <li><a href="/dashboard">Dashboard</a></li>
                                                 <li><a href="/transactions">Transaction</a></li>
                                                 <li><a href="/tree">Tree</a></li>
                                                 <li><a href="/activity">Activity</a></li>
                                                 <li><a href="/deposit">Deposit</a></li>
                                                 <li class="button-header margin-left "><a href="/logout" class="btn">Sign Out</a></li>
-                                                @else 
+                                                @else
+                                                <li><a href="/">Home</a></li>
                                                 <li class="button-header margin-left "><a href="/register" class="btn">Sign Up</a></li>
                                                 <li class="button-header"><a href="/login" class="btn3">Sign In</a></li>
                                                   @endif
@@ -81,7 +83,7 @@
                                         </nav>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                             <!-- Mobile Menu -->
                             <div class="col-12">
                                 <div class="mobile_menu d-block d-lg-none"></div>
@@ -96,7 +98,7 @@
 
 
     @yield('content')
-    
+
 
 <footer>
     <div class="footer-wrappr " data-background="{{ asset('images/gallery/footer-bg.png')}}">
@@ -167,7 +169,7 @@
 <script src="{{ asset('js/mail-script.js')}}"></script>
 <script src="{{ asset('js/jquery.ajaxchimp.min.js')}}"></script>
 
-<!-- Jquery Plugins, main Jquery -->    
+<!-- Jquery Plugins, main Jquery -->
 <script src="{{ asset('js/plugins.js')}}"></script>
 <script src="{{ asset('js/main.js')}}"></script>
 
