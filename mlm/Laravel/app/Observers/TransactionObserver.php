@@ -14,7 +14,7 @@ class TransactionObserver
      */
     public function created(transaction $transaction)
     {
-        event(new PaymentConfirmed());
+        // event(new PaymentConfirmed());
         //
     }
 

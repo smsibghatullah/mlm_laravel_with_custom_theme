@@ -4,8 +4,12 @@ namespace App\Observers;
 
 use App\Models\Tasks;
 
-use App\Models\Dailytask;
+use App\Models\dailytask;
+use App\Models\deposit;
+use App\Models\User;
+use App\Models\transaction;
 use App\Enums\TaskStatus;
+use App\Enums\TransacTypes;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,35 +30,39 @@ class TaskObserver
 
             if($completed_count >= 30){
                 // echo "Task completion profit";
-                dd( Deposit::where('user_id',Auth::user()->id) );
+                // dd( Deposit::where('user_id',Auth::user()->id)->firstOrFail());
                 $level1_user_amount = Deposit::where('user_id',Auth::user()->id)->firstOrFail();
-
-                if($level1_user_amount['level']==1)
+                $user_childs = User::where('parent_code', Auth::user()->code)->count();
+                if($user_childs<10) //level 1
                 {
                     $amount = ($level1_user_amount['amount']/100)*0.5;
                 }
-                elseif($level1_user_amount['level']==2)
+                elseif($user_childs>10 && $user_childs<20) //level 2
                 {
                     $amount = ($level1_user_amount['amount']/100)*0.6;
                 }
-                elseif($level1_user_amount['level']==3)
+                elseif($user_childs>20 && $user_childs<30) //level 3
                 {
                     $amount = ($level1_user_amount['amount']/100)*0.73;
                 }
-                elseif($level1_user_amount['level']==4)
+                elseif($user_childs>=30) //level 4
                 {
                     $amount = ($level1_user_amount['amount']/100)*0.83;
                 }
 
-                $res = Dailytask::create([
+                $create = [
                     'amount' => $amount,
+                    'deposit'=>  true,
+                    'withdraw'=> false,
+                    'description'=> 'null',
+                    'title'=> 'null',
+                    'status'=> TransacTypes::DailyEarning,
+                    'transaction_id'=> uniqid(),
                     'user_id' => Auth::user()->id,
-                  ]);
+                ];
 
-                $response = array(
-                  'status' => 'success',
-                  'msg' => 'Done',
-                );
+                $res = Transaction::create($create);
+
              }
 
         }
