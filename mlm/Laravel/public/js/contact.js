@@ -1,9 +1,9 @@
 $(document).ready(function(){
-    
+
     (function($) {
         "use strict";
 
-    
+
     jQuery.validator.addMethod('answercheck', function (value, element) {
         return this.optional(element) || /^\bcat\b$/.test(value)
     }, "type the correct answer -_-");
@@ -14,36 +14,22 @@ $(document).ready(function(){
         var conter =0;
         $(".activity_popup").click(function() {
             $(this).prop('disabled', true);
-            
+
             conter +=1;
             var butnid= this.id;
 
+            waitingDialog.show('Activity in progress', {
+                dialogSize: 'lg',
+                progressType: 'success'
+              });
 
 
-            console.log(conter);
-            if(conter==3)
-            {
-                
-                $.ajax({
-                   type:'POST',
-                   url:'/dailytaskcomplate',
-                   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                   data : {
-                        "_token": $('#token').val()
-                      },
-                    success:function(data) {
-                    console.log(data.msg)
-                       }
-                    });
-             } 
-             waitingDialog.show('Activity number '+conter.toString()+' in progress', {
-                  dialogSize: 'lg',
-                  progressType: 'success'
-                });
+
             setTimeout(function () {
               waitingDialog.hide();
                           console.log($('#text_'+butnid));
               $('#text_'+butnid).html("Activity has been completed successfully");
+              window.location.href = 'task/completed';
             }, 10000);
 
           });
@@ -119,6 +105,6 @@ $(document).ready(function(){
             }
         })
     })
-        
+
  })(jQuery)
 })

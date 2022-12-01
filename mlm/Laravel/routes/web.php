@@ -48,7 +48,6 @@ Route::get('/administrator/userdetails/{id}', [AdminController::class, 'user']);
 Route::get('/administrator/settings', [AdminController::class, 'settings'])->name('/administrator/settings');;
 
 
-
 Route::get('/administrator/settingedit/{id}', [AdminController::class, 'settingedit']);
 Route::get('/administrator/settingdelete/{id}', [AdminController::class, 'settingdelete']);
 Route::post('/administrator/settingedit/{id}', [AdminController::class, 'settingedit']);
@@ -58,6 +57,8 @@ Route::get('/administrator/setting/create', [AdminController::class, 'settingcre
 Route::post('/administrator/setting/create', [AdminController::class, 'settingcreate']);
 
 Route::get('/administrator/mark_approved/{id}', [AdminController::class, 'mark_approve_user']);
+Route::middleware('throttle:completetask')->get('task/completed', [FrontController::class, 'task_completed']);
+
 Route::get('logout', [FrontController::class, 'logout']);
 
 
@@ -67,4 +68,4 @@ Route::get('/blog', [FrontController::class, 'blog']);
 
 // Route::get('/profiles/{id}', 'FrontController@show')->name('profiles.show');
 Route::post('/store', [FrontController::class, 'save']);
-Route::post('/loginpost', [FrontController::class, 'customLogin']); 
+Route::post('/loginpost', [FrontController::class, 'customLogin']);

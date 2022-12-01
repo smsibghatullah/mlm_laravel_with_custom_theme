@@ -1,8 +1,8 @@
 <?php
-  
+
 namespace App\Http\Controllers;
 
-use Hash;   
+use Hash;
 use App\Models\User;
 use App\Models\news;
 use App\Models\deposit;
@@ -11,7 +11,11 @@ use Illuminate\Http\Request;
 use App\Models\transaction;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
-  
+use App\Enums\TaskStatus;
+use App\Models\Tasks;
+use Response;
+use Carbon\Carbon;
+
 class FrontController extends Controller
 {
     /**
@@ -23,7 +27,7 @@ class FrontController extends Controller
     public function login()
     {
         return view('front.login');
-    }    
+    }
     public function depositform()
     {
         $user_detail = Auth::user();
@@ -32,12 +36,14 @@ class FrontController extends Controller
 
     public function activity()
     {
-        return view('front.activity');
+        $tasks = Tasks::where('user_id', Auth::user()->id)->whereDate('created_at', Carbon::today())->get();
+        // dd($tasks);
+        return view('front.activity', compact('tasks'));
     }
 
     public function dailytaskcomplate()
     {
-        
+
         $level1_user_amount = Deposit::where('user_id',Auth::user()->id)->firstOrFail();
 
         if($level1_user_amount['level']==1)
@@ -51,11 +57,11 @@ class FrontController extends Controller
         elseif($level1_user_amount['level']==3)
         {
             $amount = ($level1_user_amount['amount']/100)*0.73;
-        } 
+        }
         elseif($level1_user_amount['level']==4)
         {
             $amount = ($level1_user_amount['amount']/100)*0.83;
-        } 
+        }
 
         $res = Dailytask::create([
             'amount' => $amount,
@@ -67,7 +73,7 @@ class FrontController extends Controller
           'msg' => 'Done',
         );
 
-        response()->json($response); 
+        response()->json($response);
 
     }
 
@@ -83,16 +89,16 @@ class FrontController extends Controller
                 'email' => 'required',
                 'password' => 'required',
             ]);
-            
+
             $credentials = $request->only('email', 'password');
-       
+
             if (Auth::attempt($credentials)) {
                 return redirect()->intended('/')
                             ->withSuccess('Signed in');
             }
             else {
             }
-      
+
             return redirect("login")->withSuccess('Login details are not valid');
     }
 
@@ -100,10 +106,10 @@ class FrontController extends Controller
     public function index()
     {
         // $users = User::latest()->paginate(5);
-    
+
         return view('front.index');
     }
-     
+
 
 
     public function tree()
@@ -111,7 +117,7 @@ class FrontController extends Controller
         // $users = User::latest()->paginate(5);
         $tree_html = '<ul><li>';
         $plucked = User::all()->pluck(
-          'full_name', 
+          'full_name',
           'code'
         );
         $user_name_data = $plucked->all();
@@ -127,23 +133,23 @@ class FrontController extends Controller
         $tree = [];
 
         $child = $this->get_child($code);
-        
+
         if(count($child)>0)
-            { 
+            {
                 $tree[$code] = $child;
                 $tree_html .= '<ul>';
-                foreach ($child as $code1) 
+                foreach ($child as $code1)
                 {
                     $tree_html .='<li>';
                     $child1 = $this->get_child($code1);
                     $tree_html .='<a>'.$user_name_data[$code1].'</a>';
 
                     if(count($child1)>0)
-                        { 
-                    
+                        {
+
                         $tree_html .= '<ul>';
                         $tree[$code][$code1] = $child1;
-                        foreach ($child1 as $code2) 
+                        foreach ($child1 as $code2)
                             {
                             $tree_html .='<li>';
                             $child2 = $this->get_child($code2);
@@ -152,11 +158,11 @@ class FrontController extends Controller
                             if(count($child2)>0)
                                 {
                                     $tree_html .= '<ul>';
-                                foreach ($child2 as $code3) 
-                                    { 
+                                foreach ($child2 as $code3)
+                                    {
                                             $tree_html .='<li>';
                                             // $child2 = $this->get_child($code2);
-                                            $tree_html .='<a>'.$user_name_data[$code3].'</a>';                                            
+                                            $tree_html .='<a>'.$user_name_data[$code3].'</a>';
                                             $tree_html .='</li>';
 
                                     }
@@ -171,27 +177,27 @@ class FrontController extends Controller
                 $tree_html .='</ul>';
 
             }
-            
+
 $tree_html .='</li></ui>';
 
 
 
 
-                Log::info(print_r($tree_html, true));    
+                Log::info(print_r($tree_html, true));
         return view('front.tree',compact('tree_html'));
     }
-     
+
 
 
     public function get_child($code)
     {
             $sub_tree = [];
             $level1_user = User::where('parent_code',$code)->get();
-            
+
             if($level1_user)
             {
 
-            foreach ($level1_user as $user)    
+            foreach ($level1_user as $user)
             {
                 array_push($sub_tree,$user['code']);
             }
@@ -199,8 +205,8 @@ $tree_html .='</li></ui>';
             return $sub_tree;
 
 
-    }     
-   
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -214,7 +220,7 @@ $tree_html .='</li></ui>';
 
         return view('front.register');
     }
-    
+
 
     public function savedeposit(Request $request)
     {
@@ -224,9 +230,9 @@ $tree_html .='</li></ui>';
         $request->validate([
             'amount' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);    
+        ]);
 
-        $imageName = time().'.'.$request->image->extension();  
+        $imageName = time().'.'.$request->image->extension();
         $request->image->move(public_path('images/deposit'), $imageName);
         $res = Deposit::create([
             'amount' => $request->amount,
@@ -237,7 +243,7 @@ $tree_html .='</li></ui>';
           ]);
 
         Log::info($res);
-        // return view('front.index');     
+        // return view('front.index');
         return redirect()->route('/transaction')->with('success','Registration Completed successfully.');
     }
 
@@ -252,14 +258,14 @@ $tree_html .='</li></ui>';
         // $transactions = Transaction::where('user_id', Auth::user()->id)->get();
 
         $blogs = News::latest()->paginate(1000);
-    
+
         return view('front.blog',compact('blogs'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
 
         // return view('front.blog');
     }
 
-    
+
     public function save(Request $request)
     {
 
@@ -287,11 +293,11 @@ $tree_html .='</li></ui>';
           ]);
 
         Log::info($res);
-        // return view('front.index');     
+        // return view('front.index');
         return redirect()->route('login')->with('success','Registration Completed successfully.');
     }
 
-     
+
     /**
      * Display the specified resource.
      *
@@ -302,8 +308,8 @@ $tree_html .='</li></ui>';
     {
         $profile = User::find($id);
         return view('front.profile',compact('profile'));
-    } 
-     
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -314,7 +320,7 @@ $tree_html .='</li></ui>';
     {
         return view('users.edit',compact('user'));
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -328,12 +334,12 @@ $tree_html .='</li></ui>';
             'name' => 'required',
             'email' => 'required',
         ]);
-    
-        $user->update($request->all());    
+
+        $user->update($request->all());
         return redirect()->route('users.index')
                         ->with('success','User updated successfully');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -342,8 +348,22 @@ $tree_html .='</li></ui>';
      */
     public function destroy(User $user)
     {
-        $user->delete();    
+        $user->delete();
         return redirect()->route('users.index')
                         ->with('success','User deleted successfully');
+    }
+
+    public function task_completed(){
+        try {
+            $res = Tasks::create([
+                'user_id' => Auth::user()->id,
+                'status'  => TaskStatus::Completed
+
+              ]);
+        } catch (ModelNotFoundException $exception) {
+            return redirect('activity') ->with('success',$exception->getMessage());
+
+        }
+        return redirect('activity');
     }
 }
