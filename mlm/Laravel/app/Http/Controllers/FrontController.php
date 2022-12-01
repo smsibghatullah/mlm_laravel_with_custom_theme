@@ -34,12 +34,12 @@ class FrontController extends Controller
         $is_deposit = Deposit::where('user_id',Auth::user()->id)->firstOrFail();
         if($is_deposit)
         {
-        Log::info(print_r($is_deposit, true)); 
-        
+        Log::info(print_r($is_deposit, true));
+
         }
         else
         {
-         Log::info("new");   
+         Log::info("new");
         }
 
 
@@ -224,13 +224,10 @@ $tree_html .='</li></ui>';
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, $refcode = null)
     {
 
-        // print_r("asssss");
-        // exit();
-
-        return view('front.register');
+       return view('front.register', compact('refcode'));
     }
 
 

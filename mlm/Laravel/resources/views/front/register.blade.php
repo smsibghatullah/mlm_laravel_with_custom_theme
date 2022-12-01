@@ -1,4 +1,4 @@
-@extends('front.layout') 
+@extends('front.layout')
 @section('content')
 
 <main>
@@ -14,9 +14,9 @@
            </div>
          </div>
        </div>
-     </div> 
+     </div>
 </div>
-  
+
    <section class="blog_area single-post-area section-padding">
      <div class="container">
       <div class="">
@@ -28,18 +28,18 @@
 
 
         <div class="form-group">
-            
+
 
           <div class="container">
             <div class="row">
               <div class="col-md-6">
-                
+
               </div>
 
                 <div class="col-md-6">
-                
+
               </div>
-              
+
             </div>
           </div>
 
@@ -51,13 +51,13 @@
           </div>
           @if($errors->has('full_name'))
             <small class="text-danger">{{ $errors->first('full_name') }}</small>
-        @endif   
-        
+        @endif
+
           </div>
         </div>
 
         <div class="form-group">
-           
+
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -65,13 +65,13 @@
           </div>
           @if($errors->has('user_name'))
             <small class="text-danger">{{ $errors->first('user_name') }}</small>
-          @endif       
-        
+          @endif
+
           </div>
         </div>
 
         <div class="form-group">
-            
+
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -79,12 +79,12 @@
           </div>
           @if($errors->has('email'))
             <small class="text-danger">{{ $errors->first('email') }}</small>
-        @endif        
-       
+        @endif
+
           </div>
         </div>
         <div class="form-group">
-           
+
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -92,12 +92,12 @@
           </div>
           @if($errors->has('fund_password'))
             <small class="text-danger">{{ $errors->first('fund_password') }}</small>
-          @endif        
-       
+          @endif
+
           </div>
         </div>
         <div class="form-group">
-           
+
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -105,38 +105,38 @@
           </div>
           @if($errors->has('confirm_fund_password'))
             <small class="text-danger">{{ $errors->first('confirm_fund_password') }}</small>
-          @endif       
-          
+          @endif
+
           </div>
         </div>
 
 
         <div class="form-group">
-            
+
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
           <input  style= "font-size: 17px;font-family:unset;display:flex; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="phone" placeholder="Phone" class="form-control"  type="text">
-             
+
         </div>
           </div>
         </div>
-        
-        <div class="form-group">           
+
+        <div class="form-group">
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input style= "font-size: 17px;font-family:unset;display:flex; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="parent_code" placeholder="Refereance Code" class="form-control"  type="text">
+          <input value="{{$refcode}}" style= "font-size: 17px;font-family:unset;display:flex; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="parent_code" placeholder="Refereance Code" class="form-control"  type="text">
           @if($errors->has('parent_code'))
             <small class="text-danger">{{ $errors->first('parent_code') }}</small>
-          @endif       
+          @endif
         </div>
           </div>
         </div>
 
 
 
-        <div class="form-group">            
+        <div class="form-group">
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -144,12 +144,12 @@
           </div>
           @if($errors->has('password'))
             <small class="text-danger">{{ $errors->first('password') }}</small>
-          @endif        
-       
+          @endif
+
           </div>
         </div>
         <div class="form-group">
-           
+
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -157,8 +157,8 @@
           </div>
           @if($errors->has('confirm_password'))
             <small class="text-danger">{{ $errors->first('confirm_password') }}</small>
-          @endif       
-        
+          @endif
+
           </div>
         </div>
 
