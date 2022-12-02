@@ -20,7 +20,9 @@
    <section class="blog_area single-post-area section-padding">
      <div class="container">
       <div class="">
-
+@php
+    if($is_deposit == null){
+@endphp
 <center style="border: 1px solid #ced4da!important;border-radius: 10px;padding: 2px;margin: 0px;a">
       <form class="well form-horizontal" action="/savedeposit" method="post"  id="contact_form" enctype="multipart/form-data">
         <fieldset>
@@ -56,25 +58,7 @@
           </div>
         </div>
 
-<!--         <div class="form-group">
 
-          <div class="col-md-4 inputGroupContainer">
-          <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input  style= "font-size: 17px;font-family:unset; display:flex;margin-bottom: 20px; padding: 0.5rem 0.5rem; height: 50px !important ; border: 2px solid #ced4da; justify-content-center"; name="user_id_name" placeholder="User ID Number" class="form-control"  type="text">
-            </div>
-          </div>
-        </div> -->
-
-<!--         <div class="form-group">
-
-          <div class="col-md-4 inputGroupContainer">
-          <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input  style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="User Name" placeholder="User Name" class="form-control"  type="text">
-            </div>
-          </div>
-        </div> -->
         <div class="form-group">
 
           <div class="col-md-4 inputGroupContainer">
@@ -84,15 +68,6 @@
             </div>
           </div>
         </div>
-<!--         <div class="form-group">
-          <div class="col-md-4 inputGroupContainer">
-          <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input style= "font-size: 17px;font-family:unset; display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; placeholder="Phone Number" class="form-control"  type="Phone_Number">
-            </div>
-          </div>
-        </div> -->
-
 
 
         <div class="form-group">
@@ -117,19 +92,13 @@
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
           <input type="file" name="image" class="form-control" class="form-control btn btn-upload">
 
-          <!-- <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="Deposite_Amount" placeholder="Deposite Amount $USD" class="form-control"  type="text"> -->
             </div>
                   @if($errors->has('image'))
             <small class="text-danger">{{ $errors->first('image') }}</small>
         @endif
 
-
-
           </div>
         </div>
-
-
-
 
 
         <div class="form-group">
@@ -145,6 +114,18 @@
         </fieldset>
     </form>
     </center>
+    @php
+        }else {
+
+    @endphp
+
+    <div class="row">
+        <h1>Deposited Amount: {{$is_deposit->amount}}</h1>
+
+    </div>
+    @php
+        }
+    @endphp
 
   </div>
 </div>

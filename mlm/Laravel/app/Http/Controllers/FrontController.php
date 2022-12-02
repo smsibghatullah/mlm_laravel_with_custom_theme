@@ -32,19 +32,18 @@ class FrontController extends Controller
     {
         $user_detail = Auth::user();
         $is_deposit = Deposit::where('user_id',Auth::user()->id)->first();
-        // dd($is_deposit);
-        if($is_deposit)
+        if($is_deposit == null)
         {
-        Log::info(print_r($is_deposit, true));
+        return view('front.depositform',compact('user_detail', 'is_deposit'));
 
         }
         else
         {
-         Log::info("new");
+            return view('front.depositform',compact('user_detail', 'is_deposit'));
+
         }
 
 
-        return view('front.depositform',compact('user_detail'));
     }
 
     public function activity()
