@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 use App\Models\User;
+use App\Models\deposit;
 use App\Models\transaction;
 use App\Enums\TransacTypes;
 
@@ -53,6 +54,10 @@ class Helper
         $earning = Transaction::where('user_id', $user_id)->where('withdraw', true)->sum('amount');
         return $earning ?? 0;
 
+    }
+
+    public static function isApproved($user_id){
+        $deposit = Deposit::where('user_id', $user_id)->where();
     }
 
 }

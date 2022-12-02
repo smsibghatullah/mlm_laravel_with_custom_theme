@@ -10,8 +10,8 @@ use App\Models\transaction;
 use Illuminate\Support\Facades\Log;
 use App\Enums\UserStatus;
 
-
 use Illuminate\Http\Request;
+use App\Events\PaymentConfirmed;
 
 class AdminController extends Controller
 {
@@ -192,13 +192,15 @@ class AdminController extends Controller
 
     public function mark_approve_user(int $id)
     {
-        $profile = User::find($id);
-        $data = User::where('id', $id)->update([
-           'status' => ProductStatusEnum::Approved
-        ]);
-        $deposits = Deposit::where('user_id', $id)->firstOrFail();
 
+        $user = User::where('id', $id)->update([
+           'status' => UserStatus::Approved
+        ]);
         Deposit::where('user_id', $id)->where('user_id', $id)->update(['status' => 'Approved']);
+        $deposits = Deposit::where('user_id', $id)->where('status', 'Approved')->get();
+        $profile = User::where('id',$id)->first();
+        // dd($profile);
+        event(new PaymentConfirmed($profile));
 
         // in progress
         return view('admin.profile',compact('profile','deposits'));

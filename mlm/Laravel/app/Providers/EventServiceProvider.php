@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Event;
 
 use App\Events\PaymentConfirmed;
 use App\Listeners\DistributeCommission;
-use App\Listeners\UpdateReferalLevel;
+use App\Listeners\MatchingBouns;
 
 use App\Events\DailyTaskCompleted;
 use App\Listeners\DistributeTaskCompletionCommission;
@@ -36,7 +36,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         PaymentConfirmed::class => [
             DistributeCommission::class,
-            UpdateReferalLevel::class
+            MatchingBouns::class
         ],
         DailyTaskCompleted::class => [
             DistributeTaskCompletionCommission::class

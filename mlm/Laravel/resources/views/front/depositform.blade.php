@@ -1,4 +1,4 @@
-@extends('front.layout') 
+@extends('front.layout')
 @section('content')
 
 <main>
@@ -14,9 +14,9 @@
            </div>
          </div>
        </div>
-     </div> 
+     </div>
 </div>
-  
+
    <section class="blog_area single-post-area section-padding">
      <div class="container">
       <div class="">
@@ -32,18 +32,18 @@
         <!-- Text input-->
 
         <div class="form-group">
-            
+
 
           <div class="container">
             <div class="row">
               <div class="col-md-6">
-                
+
               </div>
 
                 <div class="col-md-6">
-                
+
               </div>
-              
+
             </div>
           </div>
 
@@ -57,7 +57,7 @@
         </div>
 
 <!--         <div class="form-group">
-           
+
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -67,7 +67,7 @@
         </div> -->
 
 <!--         <div class="form-group">
-            
+
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -76,7 +76,7 @@
           </div>
         </div> -->
         <div class="form-group">
-           
+
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -94,9 +94,9 @@
         </div> -->
 
 
-        
+
         <div class="form-group">
-          
+
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -104,14 +104,14 @@
             </div>
               @if($errors->has('amount'))
             <small class="text-danger">{{ $errors->first('amount') }}</small>
-        @endif   
-        
+        @endif
+
 
           </div>
         </div>
 
         <div class="form-group">
-          
+
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -121,15 +121,15 @@
             </div>
                   @if($errors->has('image'))
             <small class="text-danger">{{ $errors->first('image') }}</small>
-        @endif   
-        
-        
+        @endif
+
+
 
           </div>
         </div>
 
 
-                            
+
 
 
         <div class="form-group">

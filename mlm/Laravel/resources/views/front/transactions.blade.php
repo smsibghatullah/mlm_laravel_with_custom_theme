@@ -1,4 +1,4 @@
-@extends('front.layout') 
+@extends('front.layout')
 @section('content')
 
 <main>
@@ -14,8 +14,11 @@
            </div>
          </div>
        </div>
-     </div> 
+     </div>
 </div>
+@php
+    if(count($transactions) > 0){
+@endphp
 <div class="progress-table-wrap">
 				<div class="progress-table">
 					<div class="table-head">
@@ -26,7 +29,7 @@
 						<div class="custom">Amount</div>
 						<div class="custom">Deposit</div>
 						<div class="custom">Withdraw</div>
-					</div>	
+					</div>
 
 					 @foreach ($transactions as $transaction)
 					<div class="table-row">
@@ -39,9 +42,14 @@
 						<div class="custom">{{$transaction['withdraw']}}</div>
 					</div>
 					 @endforeach
-													
+
 												</div>
 											</div>
+@php
+        }else {
+            echo "<h1>No Transaction</h1>";
+        }
+@endphp
 
     </main><!--//app-content-->
 

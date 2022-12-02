@@ -22,6 +22,7 @@ class PaymentConfirmed
      */
     public function __construct($user)
     {
+
         $this->user = $user;
     }
 

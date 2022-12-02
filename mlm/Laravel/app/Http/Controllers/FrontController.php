@@ -31,7 +31,8 @@ class FrontController extends Controller
     public function depositform()
     {
         $user_detail = Auth::user();
-        $is_deposit = Deposit::where('user_id',Auth::user()->id)->firstOrFail();
+        $is_deposit = Deposit::where('user_id',Auth::user()->id)->first();
+        // dd($is_deposit);
         if($is_deposit)
         {
         Log::info(print_r($is_deposit, true));
@@ -257,7 +258,9 @@ $tree_html .='</li></ui>';
 
         Log::info($res);
         // return view('front.index');
-        return redirect()->route('/transaction')->with('success','Registration Completed successfully.');
+        // return redirect()->route('transactions');
+        return redirect('transactions');
+
     }
 
     public function transactions()
@@ -288,13 +291,11 @@ $tree_html .='</li></ui>';
             'email' => 'required|unique:users',
             'user_name' => 'required|unique:users',
             'password' => 'min:6|required_with:confirm_password|same:confirm_password',
-            'fund_password' => 'min:6|required_with:confirm_fund_password|same:confirm_fund_password',
-            // 'phone' => 'required|unique:users',
-            // 'parent_code' => 'exists:users,code',
+            'fund_password' => 'min:6|required_with:confirm_fund_password|same:confirm_fund_password'
         ]);
 
         $admin = User::where('is_admin', true)->first();
-        dd($admin);
+        // dd($admin);
         $res = User::create([
             'full_name' => $request->full_name,
             'user_name' => $request->user_name,
