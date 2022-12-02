@@ -28,7 +28,7 @@ class TaskObserver
                                     ->whereDate('created_at', Carbon::today())
                                     ->count();
 
-            if($completed_count >= 3){
+            if($completed_count >= 30){
                 // echo "Task completion profit";
                 // dd( Deposit::where('user_id',Auth::user()->id)->firstOrFail());
                 $user_deposit = Deposit::where('user_id',Auth::user()->id)->first();

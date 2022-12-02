@@ -17,6 +17,12 @@
      </div>
 </div>
 
+@if (session()->has('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
+
    <section class="blog_area single-post-area section-padding">
      <div class="container">
       <div class="">
@@ -119,10 +125,11 @@
 
     @endphp
 
-    <div class="row">
-        <h1>Deposited Amount: {{$is_deposit->amount}}</h1>
+    <center class="">
+        <h3>Deposited Amount: {{$is_deposit->amount}}</h3>
+        <h3>Deposited Date: {{$is_deposit->created_at}}</h3>
 
-    </div>
+    </center>
     @php
         }
     @endphp

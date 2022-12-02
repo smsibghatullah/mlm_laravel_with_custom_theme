@@ -30,6 +30,7 @@ class FrontController extends Controller
     }
     public function depositform()
     {
+
         $user_detail = Auth::user();
         $is_deposit = Deposit::where('user_id',Auth::user()->id)->first();
         if($is_deposit == null)
@@ -48,9 +49,13 @@ class FrontController extends Controller
 
     public function activity()
     {
+        $trade = ['btc/usdt', 'eth/usdt', 'doge/btc', 'shiba/usdt',
+        'xrp/usdt', 'pyr/usdt', 'link/usdt', 'sol/usdt', 'mask/usdt', 'bnb/usdt', 'ETC/usdt', 'bch/usdt', 'req/usdt',
+        'ape/usdt', 'trx/usdt', 'near/usdt', 'dexe/usdt', 'mana/usdt', 'xlm/usdt', 'rsr/usdt', 'ant/usdt', 'ada/usdt',
+        'zil/usdt', 'avax/usdt', 'matic/usdt', 'celr/usdt', 'xlm/usdt', 'slp/usdt', 'one/usdt', 'dot/usdt', 'bat/usdt'];
         $tasks = Tasks::where('user_id', Auth::user()->id)->whereDate('created_at', Carbon::today())->get();
         // dd($tasks);
-        return view('front.activity', compact('tasks'));
+        return view('front.activity', compact('tasks', 'trade'));
     }
 
     public function dailytaskcomplate()
@@ -258,7 +263,8 @@ $tree_html .='</li></ui>';
         Log::info($res);
         // return view('front.index');
         // return redirect()->route('transactions');
-        return redirect('transactions');
+        session()->flash('message', 'Deposit Proof has been submited, wait to approve by admin');
+        return redirect('deposit');
 
     }
 
@@ -375,7 +381,7 @@ $tree_html .='</li></ui>';
 
               ]);
         } catch (ModelNotFoundException $exception) {
-            return redirect('activity') ->with('success',$exception->getMessage());
+            return redirect('activity')->with('success',$exception->getMessage());
 
         }
         return redirect('activity');

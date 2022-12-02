@@ -9,7 +9,7 @@
          <div class="row align-items-center justify-content-center">
            <div class="col-xl-8 col-lg-9 col-md-12 ">
              <div class="hero__caption hero__caption3 text-center">
-               <h1 data-animation="fadeInLeft" data-delay=".6s ">Task</h1>
+               <h1 data-animation="fadeInLeft" data-delay=".6s ">Trade</h1>
              </div>
            </div>
          </div>
@@ -31,22 +31,25 @@
 @foreach ($tasks as $item)
 
     <div class="activity_box"><div>
-        <span id="text_1"> Task {{ $loop->index + 1}}  Completed</span></div><br/><br/>
-        <button id='1' class="btn activity_popup" disabled> Start Task </button>
+        <span id="text_1"> {{ $trade[($loop->index)] }} Trade Completed</span></div><br/><br/>
+        <button id='1' class="btn activity_popup" disabled> Start Trade </button>
     </div>
 
 @endforeach
 
 @if ((count($tasks)) >= 30 )
 
-<h1>No More task for today</h1>
+    <h1>No More task for today</h1>
 
 @else
+
     <div class="activity_box"><div>
-        <span id="text_1">Start Task {{ count($tasks) + 1}} </span></div><br/><br/>
-          <button id='1' class="btn activity_popup"> Start Task </button>
-      </div>
-      <br/>
+        <span id="text_1">Start {{ $trade[(count($tasks) )] }} Trade</span></div><br/><br/>
+          <button id='1' class="btn activity_popup"> Start Trade </button>
+    </div>
+
+    <br/>
+
 @endif
 
 <br/>
