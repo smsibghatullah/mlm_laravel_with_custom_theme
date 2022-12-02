@@ -38,7 +38,7 @@ class MatchingBouns
 
             if($parent_deposit != null && ($deposit['amount'] >= $parent_deposit['amount'] ?? 1000) ){
 
-                $amount = ($deposit['amount']/100)*0.5;
+                $amount = ($deposit['amount']/100)*5;
                 $create = [
                     'amount' => $amount,
                     'deposit'=>  true,
@@ -53,10 +53,6 @@ class MatchingBouns
             }
 
         }
-
-
-
-
 
     }
 }

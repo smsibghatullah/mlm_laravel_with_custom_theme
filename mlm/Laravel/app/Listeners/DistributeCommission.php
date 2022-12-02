@@ -36,7 +36,7 @@ class DistributeCommission
         $deposit = Deposit::where('user_id', $event->user->id)->first();
         $level = Helper::userlevel($event->user->code);
 
-        $amount = ($deposit['amount']/100)*0.5;
+        $amount = ($deposit['amount']/100)*5;
         $parent_user = User::where('code', $event->user->parent_code)->first();
         // dd( $parent_user );
 

@@ -1,17 +1,23 @@
-@extends('admin.layout') 
-@section('content')    
+@extends('admin.layout')
+@section('content')
 
     <div class="app-wrapper">
-	    
+
 	    <div class="app-content pt-3 p-md-3 p-lg-4">
 		    <div class="container-xl">
-			    
+
 			    <h1 class="app-page-title">User Detail</h1>
 			    @if($profile['status']!='Approved')
 			    <div class="row">
 			    	<div>
+                @php
+                    if($deposits[0]['status'] != 'Approved'){
+                @endphp
 			   	<a href="/administrator/mark_approved/{{ $profile['id']}}"><button class="btn app-btn-primary" name="Approved">Approve</button></a>
-			   </div>
+			   @php
+                    }
+               @endphp
+                </div>
 			   </div>
 			   	@endif
                 <div class="row gy-4">
@@ -20,7 +26,7 @@
 						    <div class="app-card-header p-3 border-bottom-0">
 						        <div class="row align-items-center gx-3">
 							        <div class="col-auto">
-						                
+
 							        </div><!--//col-->
 							        <div class="col-auto">
 								        <h4 class="app-card-title">Profile</h4>
@@ -28,7 +34,7 @@
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
 						    <div class="app-card-body px-4 w-100">
-							    
+
 							    <div class="item border-bottom py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
@@ -85,8 +91,8 @@
 
 <!-- 						    <div class="app-card-footer p-4 mt-auto">
 							   <a class="btn app-btn-secondary" href="#">Manage Profile</a>
-						    </div><!--//app-card-footer--> 
-						   
+						    </div><!--//app-card-footer-->
+
 						</div><!--//app-card-->
 	                </div><!--//col-->
 
@@ -99,7 +105,7 @@
 						    <div class="app-card-header p-3 border-bottom-0">
 						        <div class="row align-items-center gx-3">
 							        <div class="col-auto">
-						                
+
 							        </div><!--//col-->
 							        <div class="col-auto">
 								        <h4 class="app-card-title">Payment</h4>
@@ -107,7 +113,7 @@
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
 						    <div class="app-card-body px-4 w-100">
-							    
+
 							    <div class="item border-bottom py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
@@ -150,7 +156,7 @@
 							    </div><!--//item-->
 
 						    </div><!--//app-card-body-->
-						   
+
 						</div><!--//app-card-->
 	                </div><!--//col-->
 
@@ -162,7 +168,7 @@
 
 
                 </div><!--//row-->
-			    
+
 		    </div><!--//container-fluid-->
 	    </div><!--//app-content-->
 

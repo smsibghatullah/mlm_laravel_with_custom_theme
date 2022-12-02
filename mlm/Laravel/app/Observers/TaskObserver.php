@@ -28,26 +28,27 @@ class TaskObserver
                                     ->whereDate('created_at', Carbon::today())
                                     ->count();
 
-            if($completed_count >= 30){
+            if($completed_count >= 3){
                 // echo "Task completion profit";
                 // dd( Deposit::where('user_id',Auth::user()->id)->firstOrFail());
-                $level1_user_amount = Deposit::where('user_id',Auth::user()->id)->firstOrFail();
+                $user_deposit = Deposit::where('user_id',Auth::user()->id)->first();
                 $user_childs = User::where('parent_code', Auth::user()->code)->count();
+                $parent_user = User::where('code', Auth::user()->parent_code)->first();
                 if($user_childs<10) //level 1
                 {
-                    $amount = ($level1_user_amount['amount']/100)*0.5;
+                    $amount = ($user_deposit['amount']/100)*0.5;
                 }
                 elseif($user_childs>10 && $user_childs<20) //level 2
                 {
-                    $amount = ($level1_user_amount['amount']/100)*0.6;
+                    $amount = ($user_deposit['amount']/100)*0.6;
                 }
                 elseif($user_childs>20 && $user_childs<30) //level 3
                 {
-                    $amount = ($level1_user_amount['amount']/100)*0.73;
+                    $amount = ($user_deposit['amount']/100)*0.73;
                 }
                 elseif($user_childs>=30) //level 4
                 {
-                    $amount = ($level1_user_amount['amount']/100)*0.83;
+                    $amount = ($user_deposit['amount']/100)*0.83;
                 }
 
                 $create = [
@@ -61,7 +62,19 @@ class TaskObserver
                     'user_id' => Auth::user()->id,
                 ];
 
-                $res = Transaction::create($create);
+                $parent_create = [
+                    'amount' => ($user_deposit['amount']/100)*0.23,
+                    'deposit'=>  true,
+                    'withdraw'=> false,
+                    'description'=> 'null',
+                    'title'=> 'null',
+                    'status'=> TransacTypes::TeamCommission,
+                    'transaction_id'=> uniqid(),
+                    'user_id' => $parent_user->id,
+                ];
+                // dd([$create, $parent_create]);
+                 Transaction::create($create);
+                 Transaction::create($parent_create);
 
              }
 
