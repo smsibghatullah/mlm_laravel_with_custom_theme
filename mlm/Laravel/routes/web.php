@@ -62,6 +62,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/dailytaskcomplate', [FrontController::class, 'dailytaskcomplate']);
     Route::get('/tree', [FrontController::class, 'tree']);
     Route::get('/transactions', [FrontController::class, 'transactions']);
+    Route::get('/members', [FrontController::class, 'members']);
     Route::post('/savedeposit', [FrontController::class, 'savedeposit']);
 
     Route::middleware('throttle:completetask')->get('task/completed', [FrontController::class, 'task_completed']);

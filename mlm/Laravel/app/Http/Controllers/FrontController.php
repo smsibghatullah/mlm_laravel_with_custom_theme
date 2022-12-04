@@ -268,11 +268,19 @@ $tree_html .='</li></ui>';
 
     }
 
+    public function members()
+    {
+        $code = Auth::user()->code;
+        $members = User::where('parent_code',$code)->get();
+        return view('front.members',compact('members'));
+    }
+
     public function transactions()
     {
         $transactions = Transaction::where('user_id', Auth::user()->id)->get();
         return view('front.transactions',compact('transactions'));
     }
+
 
     public function blog()
     {
