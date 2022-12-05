@@ -69,14 +69,15 @@
                                                 @if(Auth::user()->is_admin == false) <li><a href="/activity">Activity</a></li>@endif
                                                 @if(Auth::user()->is_admin == false)  <li><a href="/deposit">Deposit</a></li>@endif
                                                 @if(Auth::user()->is_admin == false)  <li><a href="/widthdraw">Widthdraw</a></li>@endif
-                                                <li class="button-header margin-left "><a href="/logout" class="btn">Sign Out {{Auth::user()->full_name}}</a></li>
+                                                <li class="button-header margin-left "><a href="/logout" class="btn">Sign Out </a></li>
+                                                <li><a href="/dashboard">User : {{Auth::user()->full_name}}</a></li>
                                                 @else
                                                 <li><a href="/">Home</a></li>
                                                 <li class="button-header margin-left "><a href="/register" class="btn">Sign Up</a></li>
                                                 <li class="button-header"><a href="/login" class="btn3">Sign In</a></li>
                                                 @endif
-                                                <li><a href="/blog">Blog</a>
-                                                </li>
+
+                                                <li><a href="/blog">News</a></li>
                                                 <!-- <li><a href="contact.html">Contact</a></li> -->
                                                 <!-- Button -->
 
