@@ -11,4 +11,9 @@ class WidthdrawRequest extends Model
     protected $table = 'widthdraw_request';
     protected $guarded = [];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

@@ -12,6 +12,8 @@ use App\Enums\UserStatus;
 
 use Illuminate\Http\Request;
 use App\Events\PaymentConfirmed;
+use App\Models\WidthdrawRequest;
+
 
 class AdminController extends Controller
 {
@@ -66,6 +68,42 @@ class AdminController extends Controller
 
 
     }
+
+    public function widthdrawrequest()
+    {
+        $users = WidthdrawRequest::with('user')->latest()->paginate(1000);
+
+        return view('admin.widthdrawrequest',compact('users'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+
+
+    }
+
+    public function widthdrawstauts($status, $id)
+    {
+        $req = WidthdrawRequest::where('id', $id)->first();
+        $users = WidthdrawRequest::where('id', $id)->update(['status'=>$status]);
+        // dd()
+        if($status == 'approve'){
+            $create = [
+                'amount' => $req->amount,
+                'deposit'=> false,
+                'withdraw'=> true,
+                'status'=>'Approved',
+                'description'=> "Widthdraw",
+                'title'=> "widthdraw",
+                'transaction_id'=>uniqid(),
+                'user_id' => $req->user_id,
+            ];
+
+            $res = Transaction::create($create);
+        }
+
+        return redirect('administrator/widthdrawrequest');
+
+
+    }
+
 
     public function news()
     {
