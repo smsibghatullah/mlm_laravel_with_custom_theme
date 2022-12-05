@@ -15,6 +15,7 @@ use App\Enums\TaskStatus;
 use App\Models\Tasks;
 use Response;
 use Carbon\Carbon;
+use App\Models\WidthdrawRequest;
 
 class FrontController extends Controller
 {
@@ -28,6 +29,7 @@ class FrontController extends Controller
     {
         return view('front.login');
     }
+
     public function depositform()
     {
 
@@ -44,6 +46,31 @@ class FrontController extends Controller
 
         }
 
+
+    }
+
+    public function widthdraw()
+    {
+
+        $user_detail = Auth::user();
+        $widthdraws = WidthdrawRequest::where('user_id',Auth::user()->id)->get();
+        return view('front.widthdrawform',compact('user_detail', 'widthdraws'));
+
+    }
+
+    public function create_widthdraw(Request $request)
+    {
+        $user_detail = Auth::user();
+
+        $create = [
+            'user_id'=> Auth::user()->id,
+            'amount' => $request->amount,
+            'status' => 'requested'
+        ];
+
+        $widthdraws = WidthdrawRequest::create($create);
+        session()->flash('message', 'Widthdraw Request has been created');
+        return redirect('dashboard');
 
     }
 

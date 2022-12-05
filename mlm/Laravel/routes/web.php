@@ -58,12 +58,16 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/activity', [FrontController::class, 'activity']);
     Route::get('/deposit', [FrontController::class, 'depositform']);
+    Route::post('/savedeposit', [FrontController::class, 'savedeposit']);
+
+    Route::get('widthdraw', [FrontController::class, 'widthdraw']);
+    Route::post('widthdraw', [FrontController::class, 'create_widthdraw']);
+
     Route::get('/profile/{id}', [FrontController::class, 'show']);
     Route::post('/dailytaskcomplate', [FrontController::class, 'dailytaskcomplate']);
     Route::get('/tree', [FrontController::class, 'tree']);
     Route::get('/transactions', [FrontController::class, 'transactions']);
     Route::get('/members', [FrontController::class, 'members']);
-    Route::post('/savedeposit', [FrontController::class, 'savedeposit']);
 
     Route::middleware('throttle:completetask')->get('task/completed', [FrontController::class, 'task_completed']);
 
