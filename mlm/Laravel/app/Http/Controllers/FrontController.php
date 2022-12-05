@@ -27,6 +27,10 @@ class FrontController extends Controller
 
     public function login()
     {
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect('/dashboard');
+        }
         return view('front.login');
     }
 
@@ -129,6 +133,7 @@ class FrontController extends Controller
 
     public function customLogin(Request $request)
     {
+
             $request->validate([
                 'email' => 'required',
                 'password' => 'required',
