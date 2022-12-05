@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WidthdrawRequest extends Model
+class withdrawRequest extends Model
 {
     use HasFactory;
-    protected $table = 'widthdraw_request';
+    protected $table = 'withdraw_request';
     protected $guarded = [];
 
     public function user()

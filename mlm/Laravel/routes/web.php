@@ -29,8 +29,8 @@ Route::group(['middleware' => ['EnsureIsAdmin']], function() {
     Route::get('/administrator', [AdminController::class, 'users']);
 
     Route::get('/administrator/users', [AdminController::class, 'users']);
-    Route::get('/administrator/widthdrawrequest', [AdminController::class, 'widthdrawrequest']);
-    Route::get('/administrator/widthdraw/{status}/{id}', [AdminController::class, 'widthdrawstauts']);
+    Route::get('/administrator/withdrawrequest', [AdminController::class, 'withdrawrequest']);
+    Route::get('/administrator/withdraw/{status}/{id}', [AdminController::class, 'withdrawstauts']);
 
     Route::get('/administrator/news', [AdminController::class, 'news'])->name('/administrator/news');
     Route::get('/administrator/news/create', [AdminController::class, 'newscreate']);
@@ -63,8 +63,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/deposit', [FrontController::class, 'depositform']);
     Route::post('/savedeposit', [FrontController::class, 'savedeposit']);
 
-    Route::get('widthdraw', [FrontController::class, 'widthdraw']);
-    Route::post('widthdraw', [FrontController::class, 'create_widthdraw']);
+    Route::get('withdraw', [FrontController::class, 'withdraw']);
+    Route::post('withdraw', [FrontController::class, 'create_withdraw']);
 
     Route::get('/profile/{id}', [FrontController::class, 'show']);
     Route::post('/dailytaskcomplate', [FrontController::class, 'dailytaskcomplate']);

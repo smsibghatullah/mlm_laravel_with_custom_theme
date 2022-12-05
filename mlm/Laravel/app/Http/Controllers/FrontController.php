@@ -15,7 +15,7 @@ use App\Enums\TaskStatus;
 use App\Models\Tasks;
 use Response;
 use Carbon\Carbon;
-use App\Models\WidthdrawRequest;
+use App\Models\withdrawRequest;
 
 class FrontController extends Controller
 {
@@ -53,16 +53,16 @@ class FrontController extends Controller
 
     }
 
-    public function widthdraw()
+    public function withdraw()
     {
 
         $user_detail = Auth::user();
-        $widthdraws = WidthdrawRequest::where('user_id',Auth::user()->id)->get();
-        return view('front.widthdrawform',compact('user_detail', 'widthdraws'));
+        $withdraws = withdrawRequest::where('user_id',Auth::user()->id)->get();
+        return view('front.withdrawform',compact('user_detail', 'withdraws'));
 
     }
 
-    public function create_widthdraw(Request $request)
+    public function create_withdraw(Request $request)
     {
         $user_detail = Auth::user();
 
@@ -72,8 +72,8 @@ class FrontController extends Controller
             'status' => 'requested'
         ];
 
-        $widthdraws = WidthdrawRequest::create($create);
-        session()->flash('message', 'Widthdraw Request has been created');
+        $withdraws = withdrawRequest::create($create);
+        session()->flash('message', 'withdraw Request has been created');
         return redirect('dashboard');
 
     }
@@ -340,7 +340,12 @@ $tree_html .='</li></ui>';
         ]);
 
         $admin = User::where('is_admin', true)->first();
-        // dd($admin);
+        // print($admin);
+        // print_r($request->parent_code ?? $admin->code);
+        // echo '<br/>';
+        // print_r($request->parent_code);
+            // exit();
+
         $res = User::create([
             'full_name' => $request->full_name,
             'user_name' => $request->user_name,

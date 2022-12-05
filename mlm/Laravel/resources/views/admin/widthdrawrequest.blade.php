@@ -8,7 +8,7 @@
 
 			    <div class="row g-3 mb-4 align-items-center justify-content-between">
 				    <div class="col-auto">
-			            <h1 class="app-page-title mb-0">Widthdraw Requests</h1>
+			            <h1 class="app-page-title mb-0">withdraw Requests</h1>
 				    </div>
 
 			    </div><!--//row-->
@@ -45,12 +45,12 @@
 												<td class="cell">
                                                   @if ($user['status'] != 'approve')
 
-                                                  <a class="btn-sm app-btn-secondary" href="/administrator/widthdraw/approve/{{$user['id']}}">Approve</a>
+                                                  <a class="btn-sm app-btn-secondary" href="/administrator/withdraw/approve/{{$user['id']}}">Approve</a>
                                                   @endif
                                                 </td>
 												<td class="cell">
                                                     @if ($user['status'] != 'approve')
-                                                    <a class="btn-sm app-btn-secondary" href="/administrator/widthdraw/cancle/{{$user['id']}}">Cancle</a>
+                                                    <a class="btn-sm app-btn-secondary" href="/administrator/withdraw/cancle/{{$user['id']}}">Cancle</a>
                                                     @endif
                                                 </td>
 

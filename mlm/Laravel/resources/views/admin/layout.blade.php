@@ -46,8 +46,8 @@
 
                         <li class="nav-item">
 					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					        <a class="nav-link" href="/administrator/widthdrawrequest">
-		                         <span class="nav-link-text">Widthdraw Requests</span>
+					        <a class="nav-link" href="/administrator/withdrawrequest">
+		                         <span class="nav-link-text">withdraw Requests</span>
 					        </a><!--//nav-link-->
 					    </li><!--//nav-item-->
 

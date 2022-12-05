@@ -28,7 +28,7 @@
       <div class="">
 
 <center style="border: 1px solid #ced4da!important;border-radius: 10px;padding: 2px;margin: 0px;a">
-      <form class="well form-horizontal" action="/widthdraw" method="post"  id="contact_form" enctype="multipart/form-data">
+      <form class="well form-horizontal" action="/withdraw" method="post"  id="contact_form" enctype="multipart/form-data">
         <fieldset>
           {{ csrf_field() }}
 

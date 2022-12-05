@@ -12,7 +12,7 @@ use App\Enums\UserStatus;
 
 use Illuminate\Http\Request;
 use App\Events\PaymentConfirmed;
-use App\Models\WidthdrawRequest;
+use App\Models\withdrawRequest;
 
 
 class AdminController extends Controller
@@ -69,20 +69,20 @@ class AdminController extends Controller
 
     }
 
-    public function widthdrawrequest()
+    public function withdrawrequest()
     {
-        $users = WidthdrawRequest::with('user')->latest()->paginate(1000);
+        $users = withdrawRequest::with('user')->latest()->paginate(1000);
 
-        return view('admin.widthdrawrequest',compact('users'))
+        return view('admin.withdrawrequest',compact('users'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
 
 
     }
 
-    public function widthdrawstauts($status, $id)
+    public function withdrawstauts($status, $id)
     {
-        $req = WidthdrawRequest::where('id', $id)->first();
-        $users = WidthdrawRequest::where('id', $id)->update(['status'=>$status]);
+        $req = withdrawRequest::where('id', $id)->first();
+        $users = withdrawRequest::where('id', $id)->update(['status'=>$status]);
         // dd()
         if($status == 'approve'){
             $create = [
@@ -90,8 +90,8 @@ class AdminController extends Controller
                 'deposit'=> false,
                 'withdraw'=> true,
                 'status'=>'Approved',
-                'description'=> "Widthdraw",
-                'title'=> "widthdraw",
+                'description'=> "withdraw",
+                'title'=> "withdraw",
                 'transaction_id'=>uniqid(),
                 'user_id' => $req->user_id,
             ];
@@ -99,7 +99,7 @@ class AdminController extends Controller
             $res = Transaction::create($create);
         }
 
-        return redirect('administrator/widthdrawrequest');
+        return redirect('administrator/withdrawrequest');
 
 
     }

@@ -68,7 +68,7 @@
                                                 <li><a href="/members">My Team</a></li>
                                                 @if(Auth::user()->is_admin == false) <li><a href="/activity">Activity</a></li>@endif
                                                 @if(Auth::user()->is_admin == false)  <li><a href="/deposit">Deposit</a></li>@endif
-                                                @if(Auth::user()->is_admin == false)  <li><a href="/widthdraw">Widthdraw</a></li>@endif
+                                                @if(Auth::user()->is_admin == false)  <li><a href="/withdraw">withdraw</a></li>@endif
                                                 <li class="button-header margin-left "><a href="/logout" class="btn">Sign Out </a></li>
                                                 <li><a href="/dashboard">User : {{Auth::user()->full_name}}</a></li>
                                                 @else
