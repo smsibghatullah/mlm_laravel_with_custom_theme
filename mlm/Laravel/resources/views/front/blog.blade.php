@@ -1,4 +1,4 @@
-@extends('front.layout') 
+@extends('front.layout')
 @section('content')
 
 <main>
@@ -14,7 +14,7 @@
            </div>
          </div>
        </div>
-     </div> 
+     </div>
 </div>
 
 <section class="blog_area section-padding">
@@ -36,7 +36,7 @@
                             </article>
                             @endforeach
 
-                            <nav class="blog-pagination justify-content-center d-flex">
+                            {{-- <nav class="blog-pagination justify-content-center d-flex">
                                 <ul class="pagination">
                                     <li class="page-item">
                                         <a href="#" class="page-link" aria-label="Previous">
@@ -55,7 +55,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </nav>
+                            </nav> --}}
                         </div>
                     </div>
 
