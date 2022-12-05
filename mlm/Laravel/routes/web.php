@@ -26,7 +26,7 @@ Route::get('/register/{refcode?}', [FrontController::class, 'create']);
 Route::get('login', [FrontController::class, 'login'])->name('login');
 
 Route::group(['middleware' => ['EnsureIsAdmin']], function() {
-    Route::get('/administrator', [AdminController::class, 'index']);
+    Route::get('/administrator', [AdminController::class, 'users']);
 
     Route::get('/administrator/users', [AdminController::class, 'users']);
     Route::get('/administrator/widthdrawrequest', [AdminController::class, 'widthdrawrequest']);
@@ -75,7 +75,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::middleware('throttle:completetask')->get('task/completed', [FrontController::class, 'task_completed']);
 
     Route::get('logout', [FrontController::class, 'logout']);
-
 
 });
 

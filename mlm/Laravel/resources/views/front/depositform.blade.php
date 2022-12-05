@@ -60,6 +60,7 @@
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
           <!-- <input  style= "font-size: 17px;font-family:unset; display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="trc_address" placeholder="Company Trc20 Address" class="form-control"  type="text"> -->
+         <label>Company Trc20 Address:</label>
           <label>TEugTcAhG2bbboyAn3M1QK3GcPfwgk3Q1W</label>
             </div>
           </div>
