@@ -66,6 +66,17 @@
           </div>
         </div>
 
+        <div class="form-group">
+
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input readonly="readonly" style="font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center";  placeholder="E-mail" class="form-control"  type="text" value="{{$user_detail['email']}}">
+                </div>
+            </div>
+
+        </div>
+
 
         <div class="form-group">
 
@@ -83,7 +94,7 @@
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="amount" placeholder="Deposite Amount $USD" class="form-control"  type="text">
+          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="amount" placeholder="Deposite Amount USDT" class="form-control"  type="text">
             </div>
               @if($errors->has('amount'))
             <small class="text-danger">{{ $errors->first('amount') }}</small>
