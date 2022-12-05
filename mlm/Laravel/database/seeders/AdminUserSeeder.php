@@ -20,9 +20,9 @@ class AdminUserSeeder extends Seeder
             'full_name' => Str::random(10),
             'code' => Str::random(10),
             'is_admin' => true,
-            'email' => 'optimum870@gmail.com',
-            'password' => Hash::make('123456'),
-            'fund_password' => Hash::make('123456'),
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('ytMCash@aDminUser45'),
+            'fund_password' => Hash::make('ytMCash@aDminUser45'),
             'user_name' => 'admin',
             'phone' => 123456789
         ]);
