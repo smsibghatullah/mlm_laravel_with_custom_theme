@@ -126,7 +126,7 @@
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input value="{{$refcode}}" style= "font-size: 17px;font-family:unset;display:flex; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="parent_code" placeholder="Refereance Code" class="form-control"  type="text">
+          <input value="{{$refcode}}" readonly='readonly' style="font-size: 17px;font-family:unset;display:flex; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; name="parent_code" placeholder="Refereance Code" class="form-control"  type="text">
           @if($errors->has('parent_code'))
             <small class="text-danger">{{ $errors->first('parent_code') }}</small>
           @endif

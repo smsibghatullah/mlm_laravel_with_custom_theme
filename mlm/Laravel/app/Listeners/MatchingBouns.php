@@ -44,8 +44,8 @@ class MatchingBouns
                     'deposit'=>  true,
                     'withdraw'=> false,
                     'status'=> TransacTypes::MatchindBonus,
-                    'description'=> "null",
-                    'title'=> "null",
+                    'description'=> "Matching Bonus ".$event->user->full_name,
+                    'title'=> "Matching Bonus",
                     'transaction_id'=>uniqid(),
                     'user_id' => $parent_user->id,
                 ];

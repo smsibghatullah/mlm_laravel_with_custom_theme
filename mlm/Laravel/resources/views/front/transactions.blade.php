@@ -32,8 +32,8 @@
 						<div class="custom">Title</div>
 						<div class="custom">Description</div>
 						<div class="custom">Amount</div>
-						<div class="custom">Deposit</div>
-						<div class="custom">Withdraw</div>
+						<div class="custom">Type</div>
+						<!-- <div class="custom">Withdraw</div> -->
 					</div>
 
 					 @foreach ($transactions as $transaction)
@@ -43,8 +43,11 @@
 						<div class="custom">{{$transaction['title']}}</div>
 						<div class="custom">{{$transaction['description']}}</div>
 						<div class="custom">{{$transaction['amount']}}</div>
-						<div class="custom">{{$transaction['deposit']}}</div>
-						<div class="custom">{{$transaction['withdraw']}}</div>
+						<div class="custom">@if($transaction['deposit']==1)
+								Deposited @else
+								Withdraw @endif
+						</div>
+						<!-- <div class="custom">{{$transaction['withdraw']}}</div> -->
 					</div>
 					 @endforeach
 

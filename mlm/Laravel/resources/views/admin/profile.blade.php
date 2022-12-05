@@ -11,11 +11,14 @@
 			    <div class="row">
 			    	<div>
                 @php
+                if(count($deposits)>0)
+                {
                     if($deposits[0]['status'] != 'Approved'){
                 @endphp
 			   	<a href="/administrator/mark_approved/{{ $profile['id']}}"><button class="btn app-btn-primary" name="Approved">Approve</button></a>
 			   @php
                     }
+                }
                @endphp
                 </div>
 			   </div>

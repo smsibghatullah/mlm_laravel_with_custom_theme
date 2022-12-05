@@ -37,6 +37,7 @@ class DistributeCommission
         $level = Helper::userlevel($event->user->code);
 
         $amount = ($deposit['amount']/100)*5;
+
         $parent_user = User::where('code', $event->user->parent_code)->first();
         // dd( $parent_user );
 
@@ -45,8 +46,8 @@ class DistributeCommission
             'deposit'=>  true,
             'withdraw'=> false,
             'status'=> TransacTypes::ReferalBouns,
-            'description'=> "null",
-            'title'=> "null",
+            'description'=> "Referal Bouns for ".$event->user->full_name,
+            'title'=> "Referal Bouns",
             'transaction_id'=>uniqid(),
             'user_id' => $parent_user->id,
         ];
