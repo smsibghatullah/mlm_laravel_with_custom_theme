@@ -12,7 +12,7 @@ use App\Enums\UserStatus;
 
 use Illuminate\Http\Request;
 use App\Events\PaymentConfirmed;
-use App\Models\withdrawRequest;
+use App\Models\WithdrawRequest;
 
 
 class AdminController extends Controller
