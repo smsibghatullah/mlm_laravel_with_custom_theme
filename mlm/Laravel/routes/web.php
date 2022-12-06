@@ -19,7 +19,7 @@ use App\Http\Controllers\InboxController;
 */
 
 // Route::resource('users', UserController::class);
-Route::get('/',  [FrontController::class, 'login']);
+Route::get('/',  [FrontController::class, 'index']);
 
 Route::get('/register/{refcode?}', [FrontController::class, 'create']);
 

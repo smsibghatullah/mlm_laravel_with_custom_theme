@@ -9,7 +9,7 @@
          <div class="row align-items-center justify-content-center">
            <div class="col-xl-8 col-lg-9 col-md-12 ">
              <div class="hero__caption hero__caption3 text-center">
-               <h1 data-animation="fadeInLeft" data-delay=".6s ">Deposit</h1>
+               <h1 data-animation="fadeInLeft" data-delay=".6s ">Withdraw</h1>
              </div>
            </div>
          </div>
@@ -47,6 +47,25 @@
             </div>
           </div>
         </div>
+
+        <div class="form-group">
+
+          <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input style="font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center";  placeholder="TRC Address" class="form-control"  type="text" value="" name="trc">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input style="font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center";  placeholder="Fund Password" class="form-control"  type="text" value="" name="fund_password">
+              </div>
+            </div>
+          </div>
 
 
         <div class="form-group">

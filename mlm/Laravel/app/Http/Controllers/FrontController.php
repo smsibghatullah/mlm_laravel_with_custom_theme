@@ -66,15 +66,26 @@ class FrontController extends Controller
     {
         $user_detail = Auth::user();
 
+        if(Hash::check($request->fund_password, $user_detail->fund_password))
+        {
+         
+
         $create = [
             'user_id'=> Auth::user()->id,
             'amount' => $request->amount,
+            'trc' => $request->trc,
             'status' => 'requested'
         ];
 
         $withdraws = withdrawRequest::create($create);
-        session()->flash('message', 'withdraw Request has been created');
+                session()->flash('message', 'withdraw Request has been created');
         return redirect('dashboard');
+        }
+        else {
+            session()->flash('message', 'Fund password wrong');
+            return redirect('withdraw');    
+        }
+
 
     }
 

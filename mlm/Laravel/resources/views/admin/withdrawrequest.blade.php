@@ -25,6 +25,7 @@
 												<th class="cell">Name</th>
 												<th class="cell">Available Amount</th>
 												<th class="cell">Amount</th>
+												<th class="cell">TRC</th>
 												<th class="cell">Date</th>
 
 												<th class="cell">Status</th>
@@ -39,6 +40,7 @@
 												<td class="cell"><span class="truncate">{{$user->user['full_name']}}</span></td>
 												<td class="cell">{{ Helper::totalRearning($user->user['id']) }}</td>
 												<td class="cell">{{$user['amount']}}</td>
+												<td class="cell">{{$user['trc']}}</td>
 												<td class="cell"><span class="badge bg-success">{{$user['created_at']}}</span></td>
 
 												<td>{{$user['status']}}</td>
@@ -50,7 +52,7 @@
                                                 </td>
 												<td class="cell">
                                                     @if ($user['status'] != 'approve')
-                                                    <a class="btn-sm app-btn-secondary" href="/administrator/withdraw/cancle/{{$user['id']}}">Cancle</a>
+                                                    <a class="btn-sm app-btn-secondary" href="/administrator/withdraw/cancel/{{$user['id']}}">Cancel</a>
                                                     @endif
                                                 </td>
 
