@@ -63,10 +63,10 @@ class TaskObserver
                 ];
 
                 $parent_create = [
-                    'amount' => ($user_deposit['amount']/100)*0.23,
+                    'amount' => $amount/100*7,
                     'deposit'=>  true,
                     'withdraw'=> false,
-                    'description'=> 'Daily Earning of '.$user_deposit['full_name'],
+                    'description'=> 'Daily Earning of '.Auth::user()->full_name,
                     'title'=> 'Daily Earning',
                     'status'=> TransacTypes::TeamCommission,
                     'transaction_id'=> uniqid(),
