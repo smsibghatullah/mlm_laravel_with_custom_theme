@@ -20,6 +20,8 @@
    <section class="blog_area single-post-area section-padding">
      <div class="container">
       <div class="">
+ @if($status=='approved')
+
 
 <center style="border: 1px solid #ced4da!important;border-radius: 10px;padding: 40px;margin: 0px;">
 
@@ -54,6 +56,11 @@
 
 <br/>
       </center>
+      @else
+      <center style="border: 1px solid #ced4da!important;border-radius: 10px;padding: 40px;margin: 0px;">
+      <h3>Your payment is not approved yet.</h3> 
+    </center>
+@endif      
 
   </div>
 </div>

@@ -96,8 +96,9 @@ class FrontController extends Controller
         'ape/usdt', 'trx/usdt', 'near/usdt', 'dexe/usdt', 'mana/usdt', 'xlm/usdt', 'rsr/usdt', 'ant/usdt', 'ada/usdt',
         'zil/usdt', 'avax/usdt', 'matic/usdt', 'celr/usdt', 'xlm/usdt', 'slp/usdt', 'one/usdt', 'dot/usdt', 'bat/usdt'];
         $tasks = Tasks::where('user_id', Auth::user()->id)->whereDate('created_at', Carbon::today())->get();
+        $status = Auth::user()->status;
         // dd($tasks);
-        return view('front.activity', compact('tasks', 'trade'));
+        return view('front.activity', compact('tasks', 'trade','status'));
     }
 
     public function dailytaskcomplate()
