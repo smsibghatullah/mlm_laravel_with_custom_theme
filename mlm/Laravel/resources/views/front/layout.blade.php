@@ -48,13 +48,29 @@
                         <div class="row align-items-center">
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2">
-                                <div class="logo">
-                                    <a href="/" style="  font-size: 40px !important;font-style: italic;font-family: a;">
-                                        <!-- <img src="{{ asset('images1/logo/logo.png')}}" alt="YTMCash">-->
+                                
+                                <div class="logo" style="width:500px;">
+                                   
+                                    
+                                    <div id="logo_2">
+                                        <div class="row">
+                                        <div style="margin-left:15px;">
+                                            <img width="80px" height="60px"  style=""src="{{ asset('images/hero/YTM-01.png')}}" alt="" data-animation="fadeInRight" data-delay="1s"/><span>
+                                                
+                                       <a href="/" style="  font-size: 40px !important;font-style: italic;font-family: a;margin-top: 10px !important;">
+                                        
                                         YTMCash
-                                        </a>
+                                        </a>       </span>
+                                                      </div>                                      
+                                        </div>
+                                                <div style="float: left !important;">
+                                                     <a href="/" style="  font-size: 15px !important;font-style: italic;font-family: a;">YTMCASH Is The Fastest Way To Grow Your Income.</a>
+                                       
+                                        </div>        
+                                    </div>
                                 </div>
-                            </div>
+
+                            </div> <!-- above logo -->
                             <div class="col-xl-10 col-lg-10">
                                 <div class="menu-wrapper d-flex align-items-center justify-content-end">
                                     <!-- Main-menu -->
@@ -70,7 +86,7 @@
                                                 @if(Auth::user()->is_admin == false)  <li><a href="/deposit">Deposit</a></li>@endif
                                                 @if(Auth::user()->is_admin == false)  <li><a href="/withdraw">withdraw</a></li>@endif
                                                 <li class="button-header margin-left "><a href="/logout" class="btn">Sign Out </a></li>
-                                                <li><a href="/dashboard">User : {{Auth::user()->full_name}}</a></li>
+                                                <!-- <li><a href="/dashboard">User : {{Auth::user()->full_name}}</a></li> -->
                                                 @else
                                                 <li><a href="/">Home</a></li>
                                                 <li class="button-header margin-left "><a href="/register" class="btn">Sign Up</a></li>
@@ -94,6 +110,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
         <!-- Header End -->
     </header>
