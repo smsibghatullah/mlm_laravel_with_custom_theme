@@ -91,7 +91,7 @@
 
                   <h2  style="margin-top:10px">Total Earning: {{ Helper::totalRearning(Auth::user()->id) }}</h2>
 
-                  <h2  style="margin-top:10px">Total Widtdraw: {{ Helper::totalWidtdraw(Auth::user()->id) }}</h2>
+                  <h2  style="margin-top:10px">Total Withdraw: {{ Helper::totalWidtdraw(Auth::user()->id) }}</h2>
 
 
             <br><br><br><br><br>

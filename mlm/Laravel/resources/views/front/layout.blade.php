@@ -129,7 +129,7 @@
                         <div class="col-xl-12">
                             <div class="footer-copy-right text-center">
                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by  YTMCash
+                                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved  by  YTMCash
                                   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 
                               </div>
