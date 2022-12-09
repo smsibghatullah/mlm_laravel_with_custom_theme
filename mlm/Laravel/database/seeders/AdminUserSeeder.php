@@ -20,7 +20,7 @@ class AdminUserSeeder extends Seeder
             'full_name' => Str::random(10),
             'code' => Str::random(10),
             'is_admin' => true,
-            'email' => 'admin@gmail.com',
+            'email' => 'ytMCash@aDminUser45',
             'password' => Hash::make('ytMCash@aDminUser45'),
             'fund_password' => Hash::make('ytMCash@aDminUser45'),
             'user_name' => 'admin',
