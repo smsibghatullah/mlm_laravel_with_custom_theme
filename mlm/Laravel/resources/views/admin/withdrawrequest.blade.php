@@ -62,6 +62,9 @@
 										</tbody>
 									</table>
 						        </div><!--//table-responsive-->
+                                <div style="float: right">
+                                    {!!  $users->links('vendor.pagination.bootstrap-4') !!}
+                                 </div>
 
 						    </div><!--//app-card-body-->
 						</div><!--//app-card-->

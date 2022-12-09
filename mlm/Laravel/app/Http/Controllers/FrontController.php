@@ -68,7 +68,7 @@ class FrontController extends Controller
 
         if(Hash::check($request->fund_password, $user_detail->fund_password))
         {
-         
+
 
         $create = [
             'user_id'=> Auth::user()->id,
@@ -83,7 +83,7 @@ class FrontController extends Controller
         }
         else {
             session()->flash('message', 'Fund password wrong');
-            return redirect('withdraw');    
+            return redirect('withdraw');
         }
 
 
@@ -321,7 +321,7 @@ $tree_html .='</li></ui>';
 
     public function transactions()
     {
-        $transactions = Transaction::where('user_id', Auth::user()->id)->get();
+        $transactions = Transaction::where('user_id', Auth::user()->id)->latest()->paginate(10);
         return view('front.transactions',compact('transactions'));
     }
 

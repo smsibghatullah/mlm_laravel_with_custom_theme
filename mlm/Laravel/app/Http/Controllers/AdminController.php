@@ -61,17 +61,16 @@ class AdminController extends Controller
 
     public function users()
     {
-        $users = User::latest()->paginate(1000);
+        $users = User::latest()->paginate(20);
 
         return view('admin.users',compact('users'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
-
 
     }
 
     public function withdrawrequest()
     {
-        $users = withdrawRequest::with('user')->latest()->paginate(1000);
+        $users = withdrawRequest::with('user')->latest()->paginate(20);
 
         return view('admin.withdrawrequest',compact('users'))
             ->with('i', (request()->input('page', 1) - 1) * 5);

@@ -50,9 +50,14 @@
 						<!-- <div class="custom">{{$transaction['withdraw']}}</div> -->
 					</div>
 					 @endforeach
+                     <div style="float: right">
+                        {!!  $transactions->links('vendor.pagination.bootstrap-4') !!}
+                     </div>
 
-												</div>
-											</div>
+                     </div>
+                     </div>
+
+
 @php
         }else {
             echo "<h1>No Transaction</h1>";

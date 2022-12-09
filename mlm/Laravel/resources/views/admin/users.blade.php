@@ -1,17 +1,17 @@
-@extends('admin.layout') 
-@section('content')    
+@extends('admin.layout')
+@section('content')
 
     <div class="app-wrapper">
-	    
+
 	    <div class="app-content pt-3 p-md-3 p-lg-4">
 		    <div class="container-xl">
-			    
+
 			    <div class="row g-3 mb-4 align-items-center justify-content-between">
 				    <div class="col-auto">
 			            <h1 class="app-page-title mb-0">Users</h1>
 				    </div>
 
-			    </div><!--//row-->				
+			    </div><!--//row-->
 
 				<div class="tab-content" id="orders-table-tab-content">
 			        <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
@@ -43,24 +43,27 @@
 												<td>{{$user['status']}}</td>
 												<td class="cell"><a class="btn-sm app-btn-secondary" href="/administrator/userdetails/{{$user['id']}}">View</a></td>
 												<td class="cell"><a class="btn-sm app-btn-secondary" href="/administrator/transaction/{{$user['id']}}">Transaction</a></td>
-												
+
 											</tr>
 											 @endforeach
-		
+
 										</tbody>
 									</table>
+                                    <div style="float: right">
+                                        {!!  $users->links('vendor.pagination.bootstrap-4') !!}
+                                     </div>
 						        </div><!--//table-responsive-->
-						       
-						    </div><!--//app-card-body-->		
+
+						    </div><!--//app-card-body-->
 						</div><!--//app-card-->
 
-						
+
 			        </div><!--//tab-pane-->
-			        
+
 				</div><!--//tab-content-->
-				
-				
-			    
+
+
+
 		    </div><!--//container-fluid-->
 	    </div><!--//app-content-->
  @endsection
