@@ -92,6 +92,9 @@
                   <h2  style="margin-top:10px">Total Earning: {{ Helper::totalRearning(Auth::user()->id) }}</h2>
 
                   <h2  style="margin-top:10px">Total Withdraw: {{ Helper::totalWidtdraw(Auth::user()->id) }}</h2>
+                  @if(Helper::totalWidtdraw(Auth::user()->id)>0)
+                  <h2  style="margin-top:10px">Total Remaining Balance: {{ Helper::totalRearning(Auth::user()->id) - Helper::totalWidtdraw(Auth::user()->id) }}</h2>
+                  @endif
 
 
             <br><br><br><br><br>
