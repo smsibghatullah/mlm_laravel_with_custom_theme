@@ -16,6 +16,7 @@ use App\Models\Tasks;
 use Response;
 use Carbon\Carbon;
 use App\Models\WithdrawRequest;
+use App\Helpers\Helper;
 
 class FrontController extends Controller
 {
@@ -66,6 +67,10 @@ class FrontController extends Controller
     {
         $user_detail = Auth::user();
 
+        if($request->amount<= Helper::totalRearning(Auth::user()->id) - Helper::totalWidtdraw(Auth::user()->id))
+        {
+
+        
         if(Hash::check($request->fund_password, $user_detail->fund_password))
         {
 
@@ -85,7 +90,11 @@ class FrontController extends Controller
             session()->flash('message', 'Fund password wrong');
             return redirect('withdraw');
         }
-
+        }
+        else {
+            session()->flash('message', 'Amount is wrong');
+            return redirect('withdraw');
+        }
 
     }
 

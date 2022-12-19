@@ -65,7 +65,16 @@
             <input style="font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center";  placeholder="Fund Password" class="form-control"  type="text" value="" name="fund_password">
               </div>
             </div>
-          </div>
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <span>Current available amount  is &nbsp;</span><b> {{ Helper::totalRearning($user_detail['id']) - Helper::totalWidtdraw($user_detail['id']) }}</b>
+              </div>
+            </div>
+        </div>
 
 
         <div class="form-group">

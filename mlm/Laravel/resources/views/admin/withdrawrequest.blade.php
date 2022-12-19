@@ -23,7 +23,8 @@
 											<tr>
 												<th class="cell">Email</th>
 												<th class="cell">Name</th>
-												<th class="cell">Available Amount</th>
+												<th class="cell">Total Earning</th>
+												<th class="cell">Remaining Amount</th>
 												<th class="cell">Amount</th>
 												<th class="cell">TRC</th>
 												<th class="cell">Date</th>
@@ -39,6 +40,7 @@
 												<td class="cell">{{$user->user['email']}}</td>
 												<td class="cell"><span class="truncate">{{$user->user['full_name']}}</span></td>
 												<td class="cell">{{ Helper::totalRearning($user->user['id']) }}</td>
+												<td class="cell">{{ Helper::totalRearning($user->user['id']) - Helper::totalWidtdraw($user->user['id']) }}</td>
 												<td class="cell">{{$user['amount']}}</td>
 												<td class="cell">{{$user['trc']}}</td>
 												<td class="cell"><span class="badge bg-success">{{$user['created_at']}}</span></td>
