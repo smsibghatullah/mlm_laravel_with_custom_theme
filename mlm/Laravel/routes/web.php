@@ -34,6 +34,7 @@ Route::group(['middleware' => ['EnsureIsAdmin']], function() {
 
     Route::get('/administrator/news', [AdminController::class, 'news'])->name('/administrator/news');
     Route::get('/administrator/news/create', [AdminController::class, 'newscreate']);
+    Route::get('/administrator/news/view/{id}', [AdminController::class, 'newsview']);
     Route::post('/administrator/news/create', [AdminController::class, 'savenews']);
     Route::get('/administrator/transaction/{id}', [AdminController::class, 'transaction']);
     Route::post('/administrator/transaction', [AdminController::class, 'savetransaction'])->name('/administrator/transaction');

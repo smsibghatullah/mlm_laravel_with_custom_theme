@@ -25,7 +25,7 @@
 												<th class="cell">Name</th>
 												<th class="cell">Amount</th>
 												<th class="cell">Date</th>
-												<th class="cell">Leavel</th>
+												<th class="cell">Level</th>
 												<th class="cell">Code</th>
 												<th class="cell">Status</th>
 												<th class="cell"></th>
@@ -41,7 +41,7 @@
 												<td>{{$user['level']}}</td>
 												<td class="cell">{{$user['code']}}</td>
 												<td>{{$user['status']}}</td>
-												<td class="cell"><a class="btn-sm app-btn-secondary" href="/administrator/userdetails/{{$user['id']}}">View</a></td>
+												<td class="cell"><a class="btn-sm app-btn-secondary" href="/administrator/news/create/">View</a></td>
 												<td class="cell"><a class="btn-sm app-btn-secondary" href="/administrator/transaction/{{$user['id']}}">Transaction</a></td>
 
 											</tr>
