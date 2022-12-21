@@ -31,7 +31,7 @@
 											<tr>
 												<td class="cell">{{$blog['title']}}</td>
 												<td>{{$blog['created_at']}}</span></td>
-												<td class="cell"><a class="btn-sm app-btn-secondary" href="/administrator/userdetails/{{$blog['id']}}">View</a></td>
+												<td class="cell"><a class="btn-sm app-btn-secondary" href="/administrator/news/view/{{$blog['id']}}">View</a></td>
 											</tr>
 											 @endforeach
 		

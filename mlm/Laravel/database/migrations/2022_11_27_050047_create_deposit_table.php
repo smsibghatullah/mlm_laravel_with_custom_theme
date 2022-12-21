@@ -17,7 +17,7 @@ class CreateDepositTable extends Migration
             $table->id();
             $table->string('image');
             $table->string('status');
-            $table->integer('amount');
+            $table->float('amount', 8, 2)->nullable();
             $table->bigInteger('user_id')->unsigned()->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

@@ -32,7 +32,7 @@
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; placeholder="User Name" class="form-control"  type="text" name="email" />
+          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 10px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; placeholder="Email" class="form-control"  type="text" name="email" />
             </div>
           </div>
         </div>
@@ -42,20 +42,36 @@
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 30px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; placeholder="Password" class="form-control" name="password"  type="Password" />
+          <input style= "font-size: 17px;font-family:unset;display:flex;margin-bottom: 10px; padding: 0.5rem 0.5rem; height: 50px !important; border: 2px solid #ced4da; justify-content-center"; placeholder="Password" class="form-control" name="password"  type="Password" />
             </div>
           </div>
         </div>
 
         <!-- Button -->
-        <div class="form-group">
+       <!--  <div class="form-group">
           <label class="col-md-4 control-label"></label>
-          <div class="col-md-4"><br>
-            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <!-- <input type="submit" name="Submit"/> -->
-            <input type="submit"  value="submit" class="btn btn-warning"></input>
+          <div class="col-md-2">
+            <input style="float:left;" type="submit"  value="submit" class="btn btn-warning"></input>
+            <span>  
+              <button type="submit" class="btn btn-primary">
+                                    Reset Password
+           </button>
+            </span>
           </div>
         </div>
+ -->
+         <!-- Button -->
+        <div class="row mb-0 justify-content-center">
+          <div class="col-md-12">
+                        <input  type="submit"  value="submit" class="btn btn-warning"></input>
+          </div>
+
+          <div class="col-md-12">              
+            <a href="{{url('/forget-password')}}" class="btn btn-primary btn-sm"> Reset Password </a>           
+          </div>
+
+                        </div>
+                    </form>
 
         </fieldset>
     </form>

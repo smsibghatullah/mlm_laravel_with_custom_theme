@@ -25,7 +25,7 @@
 												<th class="cell">Name</th>
 												<th class="cell">Amount</th>
 												<th class="cell">Date</th>
-												<th class="cell">Leavel</th>
+												<th class="cell">Level</th>
 												<th class="cell">Code</th>
 												<th class="cell">Status</th>
 												<th class="cell"></th>

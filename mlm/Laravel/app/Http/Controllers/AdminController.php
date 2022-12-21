@@ -144,6 +144,15 @@ class AdminController extends Controller
 
     }
 
+     public function newsview($id)
+    {
+        $news = News::find($id);
+
+         return view('admin.viewblog',compact('news'));
+
+
+    }
+
     public function settings()
     {
 

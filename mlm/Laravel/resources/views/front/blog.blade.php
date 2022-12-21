@@ -26,7 +26,7 @@
 
                             <article class="blog_item">
                                 <div class="blog_details">
-                                    <a class="d-inline-block" href="blog_details.html">
+                                    <a class="d-inline-block" href="">
                                     <span class="blog-head" style="font-size: 30px;color: #2d2d2d;font-weight: 700;font-family: Pop,sans-serif;line-height: 1.3;">
                                         {{$blog['title']}}</span>
                                     </a>

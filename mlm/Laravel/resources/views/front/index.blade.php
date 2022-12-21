@@ -245,7 +245,7 @@
                                 <!-- founder -->
                                 <div class="testimonial-founder d-flex align-items-center justify-content-center">
                                     <div class="founder-img">
-                                        <img src="{{ asset('images/hero/TETE.png')}}" alt="">
+                                        <img src="{{ asset('images/hero/TETE.png')}}" alt="" height="150">
                                     </div>
                                 </div>
                             </div>
@@ -258,11 +258,25 @@
                                 <!-- founder -->
                                 <div class="testimonial-founder d-flex align-items-center justify-content-center">
                                     <div class="founder-img">
-                                        <img src="{{ asset('images/hero/OPOP.png')}}" alt="">
-                                    </div>
+                                        <img src="{{ asset('images/hero/OPOP.png')}}" alt="" height="150">
+                                    </div>    
+                                </div>
+                            </div>
+                             <div class="single-testimonial text-center mt-55">
+                                <div class="testimonial-caption">
+                                    <img src="{{ asset('images/icon/quotes-sign.png')}}" alt="" class="quotes-sign" >
+                                    <p style="font-size:15.3px;">Respected Networkers 2023 is your year, YTMCASH can feel it. Cheers to a NEW YEAR and new opportunities!</p>
+                                </div>
+                                <!-- founder -->
+                                <div class="testimonial-founder d-flex align-items-center justify-content-center">
+                                    <div class="founder-img">
+                                        <img src ="{{ asset('images/hero/new-year-wishes-boss-1671742782.jpg')}}" alt="" height="150">
+                                    </div>    
                                 </div>
                             </div>
                         </div>
+
+
                         <!-- Testimonial End -->
                     </div>
                 </div>

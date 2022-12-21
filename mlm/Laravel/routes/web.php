@@ -27,6 +27,7 @@ Route::get('login', [FrontController::class, 'login'])->name('login');
 
 Route::group(['middleware' => ['EnsureIsAdmin']], function() {
     Route::get('/administrator', [AdminController::class, 'users']);
+   
 
     Route::get('/administrator/users', [AdminController::class, 'users']);
     Route::get('/administrator/withdrawrequest', [AdminController::class, 'withdrawrequest']);
@@ -34,6 +35,7 @@ Route::group(['middleware' => ['EnsureIsAdmin']], function() {
 
     Route::get('/administrator/news', [AdminController::class, 'news'])->name('/administrator/news');
     Route::get('/administrator/news/create', [AdminController::class, 'newscreate']);
+    Route::get('/administrator/news/view/{id}', [AdminController::class, 'newsview']);
     Route::post('/administrator/news/create', [AdminController::class, 'savenews']);
     Route::get('/administrator/transaction/{id}', [AdminController::class, 'transaction']);
     Route::post('/administrator/transaction', [AdminController::class, 'savetransaction'])->name('/administrator/transaction');
@@ -57,7 +59,7 @@ Route::group(['middleware' => ['EnsureIsAdmin']], function() {
 ///    ------- after login ---------
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/dashboard', [FrontController::class, 'dashboard']);
-
+     
 
     Route::get('/activity', [FrontController::class, 'activity']);
     Route::get('/deposit', [FrontController::class, 'depositform']);
@@ -83,3 +85,7 @@ Route::get('/blog', [FrontController::class, 'blog']);
 // Route::get('/profiles/{id}', 'FrontController@show')->name('profiles.show');
 Route::post('/store', [FrontController::class, 'save']);
 Route::post('/loginpost', [FrontController::class, 'customLogin']);
+  Route::get('/forget-password', [FrontController::class,'getEmail']);
+  Route::POST('/forget-password', [FrontController::class, 'postEmail']);
+    Route::get('/reset-password/{token}', [FrontController::class, 'getPassword']);
+Route::POST('/reset-password', [FrontController::class, 'updatePassword']);
