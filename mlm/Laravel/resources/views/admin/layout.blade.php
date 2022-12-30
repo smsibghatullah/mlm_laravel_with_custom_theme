@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>MLM Admin panel</title>
+    <title>YTMCASH Admin panel</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
